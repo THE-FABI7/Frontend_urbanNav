@@ -87,12 +87,18 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/materialize-css/dist/src/materialize.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/materialize-css/dist/js/materialize.js"
+            ]
           }
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "bf059304-9a7a-47c9-a63d-5ddf7307e79c"
   }
 }
