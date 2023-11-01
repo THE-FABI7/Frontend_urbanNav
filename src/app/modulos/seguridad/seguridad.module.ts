@@ -10,6 +10,9 @@ import { EditarUsuarioComponent } from './usuario/editar-usuario/editar-usuario.
 import { ListarUsuarioComponent } from './usuario/listar-usuario/listar-usuario.component';
 import { EliminarUsuarioComponent } from './usuario/eliminar-usuario/eliminar-usuario.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CerrarSesionComponent } from './cerrar-sesion/cerrar-sesion.component';
+import { RegistroPublicoUsuariosComponent } from './registro-publico-usuarios/registro-publico-usuarios.component';
+import { ValidarHashUsuarioPublicoComponent } from './validar-hash-usuario-publico/validar-hash-usuario-publico.component';
 
 
 @NgModule({
@@ -20,7 +23,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     CrearUsuarioComponent,
     EditarUsuarioComponent,
     ListarUsuarioComponent,
-    EliminarUsuarioComponent
+    EliminarUsuarioComponent,
+    CerrarSesionComponent,
+    RegistroPublicoUsuariosComponent,
+    ValidarHashUsuarioPublicoComponent
   ],
   imports: [
     CommonModule,

@@ -1,21 +1,40 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
-</head>
-<body>
-  <nav>
-    <div class="nav-wrapper">
-      <a href="#" class="brand-logo">UrbanNav</a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a >Home</a></li>
-        <li><a >Contacto</a></li>
-        <li><a routerLink="/seguridad/identificar-usuario">Inicia sesion</a></li>
-        <li><a href="#">Registrate</a></li>
-      </ul>
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav>
+      <div class="nav-wrapper">
+        <a href="#" class="brand-logo">UrbanNav</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="#">Home</a></li>
+          <li><a>Contacto</a></li>
+          <li>
+            <a *ngIf="!sesionActiva" routerLink="/seguridad/cerrar-sesion"
+              >Cerrar sesion</a
+            >
+          </li>
+          <li><a *ngIf="!sesionActiva">Cambiar clave</a></li>
+          <li>
+            <a *ngIf="sesionActiva" routerLink="/seguridad/identificar-usuario"
+              >Inicia sesion</a
+            >
+          </li>
+          <li><a *ngIf="sesionActiva" href="#">Registrate</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div *ngIf="!sesionActiva">
+      <app-menu-lateral> </app-menu-lateral>
     </div>
-  </nav>
-</body>
+  </body>
 </html>

@@ -1,0 +1,45 @@
+<div class="container">
+    <br>
+      <h3 class="center-align ">Formulario de Registro</h3>
+      <div class="row card">
+        <form class="col s12" [formGroup]="fGroup">
+          <div class="row">
+            <div class="input-field col s12">
+              <i class="material-icons prefix">account_circle</i>
+              <input formControlName="name" id="name" type="text" class="validate">
+              <label for="name">Nombre</label>
+            </div>
+            <div class="input-field col s12">
+                <i class="material-icons prefix">account_circle</i>
+                <input formControlName="sobrename" id="sobrename" type="text" class="validate">
+                <label for="sobrename">Apellido</label>
+              </div>
+            <div class="input-field col s12">
+              <i class="material-icons prefix">phone</i>
+              <input formControlName="phoneNumber" id="phoneNumber" type="tel" class="validate">
+              <label for="phoneNumber">Número de Teléfono</label>
+            </div>
+            <div class="input-field col s12">
+              <i class="material-icons prefix">email</i>
+              <input formControlName="emailAddress"  id="emailAddress" type="email" class="validate">
+              <label for="emailAddress">Correo Electrónico</label>
+            </div>
+            <div class="input-field col s12">
+                <i class="material-icons prefix">account_circle</i>
+                <input formControlName="birthdate" id="birthdate" type="date" class="validate">
+                <label for="birthdate">Fecha de cumpleaños</label>
+              </div>
+          </div>
+          <div class="row">
+            <div class="col s12 center-align">
+              <button (click)="registrarse()" class="btn waves-effect waves-light" type="submit" name="action">Registrar
+                <i class="material-icons right"></i>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <br>
+    <br>

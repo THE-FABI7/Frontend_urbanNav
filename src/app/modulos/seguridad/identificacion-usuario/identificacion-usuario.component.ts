@@ -65,38 +65,6 @@ export class IdentificacionUsuarioComponent {
     }
   }
 
-  // IdentificarUsuario() {
-  //   if (this.fGroup.invalid) {
-  //     alert('Datos incompletos');
-  //   } else {
-  //     let usuario = this.obtenerFormGroup['usuario'].value;
-  //     let clave = this.obtenerFormGroup['clave'].value;
-  //     let claveCifrada = MD5(clave).toString();
-
-  //     this.servicioSeguridad
-  //       .IdentificarUsuario(usuario, claveCifrada)
-  //       .subscribe({
-  //         next: (data: usuarioModel) => {
-  //           if (data._id == undefined || data._id == null) {
-  //             alert(
-  //               'Credenciales Incorrectas o falta la validacion del correo electronico'
-  //             );
-  //           } else {
-  //             //console.log(data);
-  //             if (
-  //               this.servicioSeguridad.AlmacenarDatosUsuarioIdentificado(data)
-  //             ) {
-  //               this.router.navigate(['/seguridad/2fa']);
-  //             }
-  //           }
-  //         },
-  //         error: (err) => {
-  //           console.log(err);
-  //         },
-  //       });
-  //   }
-  // }
-
   get obtenerFormGroup() {
     return this.fGroup.controls;
   }
