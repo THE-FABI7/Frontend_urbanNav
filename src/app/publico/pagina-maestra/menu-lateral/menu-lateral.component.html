@@ -2,21 +2,35 @@
   <li>
     <div class="user-view">
       <div class="background">
-        <img src="https://materializecss.com/images/office.jpg" />
+        <img src="https://img.freepik.com/free-vector/gradient-dynamic-blue-lines-background_23-2148995756.jpg?w=996&t=st=1684031004~exp=1684031604~hmac=3c41c3b0ed08be464a76ed9f4a5c6332b86c7448ed61f14a7efd471f881d86ec">
       </div>
-      <a href="#user"
-        ><img class="circle" src="https://materializecss.com/images/yuna.jpg"
-      /></a>
-      <a href="#name"><span class="white-text name">John Doe</span></a>
-      <a href="#email"
-        ><span class="white-text email">jdandturk@gmail.com</span></a
-      >
+      <a href="#user"><img class="circle" src="https://img.favpng.com/22/0/21/computer-icons-user-profile-clip-art-png-favpng-MhMHJ0Fw21MJadYjpvDQbzu5S.jpg"></a>
+      <a href="#name"><span class="white-text name">{{nombre}}</span></a>
+      <a href="#email"><span class="white-text email">{{correo}}</span></a>
     </div>
   </li>
   <li *ngFor="let m of listaMenus">
     <a routerLink="{{ m.ruta }}">{{ m.texto }}</a>
   </li>
+
+  <li>
+    <div class="divider"></div>
+  </li>
+  <li><a class="subheader">Mi Cuenta</a></li>
+  <li class="no-padding">
+    <ul class="collapsible collapsible-accordion">
+      <li>
+        <a class="collapsible-header waves-effect">Privacidad<i class="material-icons">folder</i></a>
+        <div class="collapsible-body">
+          <ul>
+            <li><a class="waves-effect" routerLink="/seguridad/cambiar-clave">Cambiar Clave</a></li>
+            <li><a class="waves-effect" routerLink="/seguridad/cerrar-sesion">Cerrar Sesion</a></li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+  </li>
+
 </ul>
-<a href="#" data-target="slide-out" class="sidenav-trigger"
-  ><i class="material-icons">menu</i></a
->
+<a href="#" data-target="slide-out" class="sidenav-trigger blue-text text-accent-4"><i
+    class="material-icons">menu</i></a>

@@ -13,6 +13,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CerrarSesionComponent } from './cerrar-sesion/cerrar-sesion.component';
 import { RegistroPublicoUsuariosComponent } from './registro-publico-usuarios/registro-publico-usuarios.component';
 import { ValidarHashUsuarioPublicoComponent } from './validar-hash-usuario-publico/validar-hash-usuario-publico.component';
+import { RegistroPublicoConductoresComponent } from './registro-publico-conductores/registro-publico-conductores.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { ValidarHashUsuarioPublicoComponent } from './validar-hash-usuario-publi
     EliminarUsuarioComponent,
     CerrarSesionComponent,
     RegistroPublicoUsuariosComponent,
-    ValidarHashUsuarioPublicoComponent
+    ValidarHashUsuarioPublicoComponent,
+    RegistroPublicoConductoresComponent
   ],
   imports: [
     CommonModule,

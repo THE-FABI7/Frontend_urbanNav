@@ -11,11 +11,17 @@ declare const iniciarMenuLateral: any;
 })
 export class MenuLateralComponent {
   listaMenus: itemMenuModel[] = [];
+  nombre: string = '';
+  correo: string = '';
 
   constructor(private servicioSeguridad: SeguridadService) {}
 
   ngOnInit() {
     this.listaMenus = this.servicioSeguridad.ObtenerItemsMenuLateral();
+    this.nombre = this.servicioSeguridad.obtenerNombreCompleto();
+    this.correo = this.servicioSeguridad.obtenerCorreo();
     iniciarMenuLateral();
   }
 }
+
+

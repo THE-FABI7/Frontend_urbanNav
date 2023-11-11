@@ -20,10 +20,10 @@ export class EncabezadoComponent {
     this.servicioSeguridad.ObtenerDatosSesion().subscribe({
       next: (datos: usuarioValidadoModel) => {
         console.log(datos);
-        if (datos.token != '') {
-          this.sesionActiva = false;
-        } else {
+        if (datos.token != ""){
           this.sesionActiva = true;
+        } else {
+          this.sesionActiva = false;
         }
       },
       error: (err: any) => {

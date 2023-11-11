@@ -139,7 +139,7 @@ export class SeguridadService {
   ConstruirMenuLateral(permisos: permisosModel[]) {
     let menu: itemMenuModel[] = [];
 
-    console.log(permisos);
+    // console.log(permisos);
 
     permisos.forEach((permiso) => {
       let datosRuta = ConfiguracionMenuLateral.listaMenus.filter(
@@ -216,7 +216,41 @@ export class SeguridadService {
 
   ValidarHashUsuarioPublico(hash: string): Observable<boolean> {
     return this.http.post<boolean>(`${this.urlBase}validar-hash-usuario`, {
-      codigoHash: hash
+      codigoHash: hash,
     });
+  }
+
+  obtenerCorreo(): string {
+    let datosSesion = localStorage.getItem('datos-sesion');
+
+    if (datosSesion) {
+      let ds = JSON.parse(datosSesion);
+      let correo = ds.user.correo;
+      console.log(correo);
+      return correo;
+    }
+    return '';
+  }
+  obtenerIdUsuario(): string {
+    let datosSesion = localStorage.getItem('datos-sesion');
+
+    if (datosSesion) {
+      let ds = JSON.parse(datosSesion);
+      let idUsuario = ds.user.id;
+      console.log(idUsuario);
+      return idUsuario;
+    }
+    return '';
+  }
+  obtenerNombreCompleto(): string {
+    let datosSesion = localStorage.getItem('datos-sesion');
+
+    if (datosSesion) {
+      let ds = JSON.parse(datosSesion);
+      let nombreCompleto = ds.user.Nombre + ' ' + ds.user.Apellido;
+      console.log(nombreCompleto);
+      return nombreCompleto;
+    }
+    return '';
   }
 }
