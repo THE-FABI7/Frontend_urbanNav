@@ -13,6 +13,7 @@ import { ConfiguracionMenuLateral } from '../config/configuracionMenuLateral';
 })
 export class SeguridadService {
   urlBase: string = configuracionRutasBackend.urlSeguridad;
+  urlLogica: string = configuracionRutasBackend.urlLogica;
   constructor(private http: HttpClient) {}
 
   /**
@@ -252,5 +253,24 @@ export class SeguridadService {
       return nombreCompleto;
     }
     return '';
+  }
+
+  obtenerFoto(): string {
+    let datosSesion = localStorage.getItem('datos-sesion');
+
+    if (datosSesion) {
+      let ds = JSON.parse(datosSesion);
+      let foto = ds.user.Foto ;
+      console.log(foto);
+      return foto;
+    }
+    return '';
+  }
+
+
+  updateImage(file: File) {
+    const formData = new FormData();
+    formData.append('file', file);
+    return this.http.post(`${this.urlLogica}cargar-archivo-cliente`, formData);
   }
 }

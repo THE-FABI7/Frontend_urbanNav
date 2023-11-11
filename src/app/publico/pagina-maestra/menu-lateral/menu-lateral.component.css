@@ -1,0 +1,19 @@
+/* En tu archivo CSS */
+.custom-link {
+    background-color: black;
+    color: white;
+  }
+
+  .custom-link i {
+    color: white;
+  }
+
+  /* En tu archivo CSS */
+.custom-link:hover {
+    background-color: rgb(65, 64, 64);
+  }
+
+  /* En tu archivo CSS */
+.material-icons {
+    color: #000000; /* Reemplaza #000000 con el color de tu nav */
+  }
