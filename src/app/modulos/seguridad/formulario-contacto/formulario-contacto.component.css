@@ -12,9 +12,9 @@
 .centered-text {
   text-align: center;
   font-size: 1.9em; /* Ajusta el tamaño del texto */
-  font-family: Arial, sans-serif; 
-  color: #333; 
-  line-height: 1.6; 
+  font-family: Arial, sans-serif;
+  color: #333;
+  line-height: 1.6;
   font-weight: bold;
 }
 
@@ -26,6 +26,11 @@
 }
 
 .large-textarea {
-    width: 100%; /* Ajusta el ancho del textarea */
-    height: 200px; /* Ajusta la altura del textarea */
-  }
+  width: 100%; /* Ajusta el ancho del textarea */
+  height: 200px; /* Ajusta la altura del textarea */
+}
+
+.btn-black {
+  background-color: black;
+  color: white; /* This is to make the text visible */
+}

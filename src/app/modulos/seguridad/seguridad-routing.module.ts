@@ -10,6 +10,7 @@ import { RegistroPublicoUsuariosComponent } from './registro-publico-usuarios/re
 import { ValidarHashUsuarioPublicoComponent } from './validar-hash-usuario-publico/validar-hash-usuario-publico.component';
 import { RegistroPublicoConductoresComponent } from './registro-publico-conductores/registro-publico-conductores.component';
 import { FormularioContactoComponent } from './formulario-contacto/formulario-contacto.component';
+import { InformacionComponent } from './informacion/informacion.component';
 
 const routes: Routes = [
   {
@@ -51,6 +52,10 @@ const routes: Routes = [
   {
     path: 'registrarpqr',
     component: FormularioContactoComponent,
+  },
+  {
+    path: 'informacion',
+    component: InformacionComponent,
   },
 ];
 
