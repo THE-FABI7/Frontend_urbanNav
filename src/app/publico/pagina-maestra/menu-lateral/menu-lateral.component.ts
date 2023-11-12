@@ -15,6 +15,7 @@ export class MenuLateralComponent {
   nombre: string = '';
   correo: string = '';
   foto: string = '';
+  rol: string = '';
   userImage = 'https://img.favpng.com/22/0/21/computer-icons-user-profile-clip-art-png-favpng-MhMHJ0Fw21MJadYjpvDQbzu5S.jpg';
   @ViewChild('fileInput') fileInput!: ElementRef;
 
@@ -24,6 +25,7 @@ export class MenuLateralComponent {
     this.listaMenus = this.servicioSeguridad.ObtenerItemsMenuLateral();
     this.nombre = this.servicioSeguridad.obtenerNombreCompleto();
     this.correo = this.servicioSeguridad.obtenerCorreo();
+    this.rol = this.servicioSeguridad.obtenerRol();
     const imageUrl = this.servicioSeguridad.obtenerFoto();
     if (imageUrl) {
       this.userImage = imageUrl;

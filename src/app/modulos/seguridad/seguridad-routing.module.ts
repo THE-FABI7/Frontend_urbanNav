@@ -9,6 +9,7 @@ import { RecuperarClaveComponent } from './recuperar-clave/recuperar-clave.compo
 import { RegistroPublicoUsuariosComponent } from './registro-publico-usuarios/registro-publico-usuarios.component';
 import { ValidarHashUsuarioPublicoComponent } from './validar-hash-usuario-publico/validar-hash-usuario-publico.component';
 import { RegistroPublicoConductoresComponent } from './registro-publico-conductores/registro-publico-conductores.component';
+import { FormularioContactoComponent } from './formulario-contacto/formulario-contacto.component';
 
 const routes: Routes = [
   {
@@ -24,7 +25,7 @@ const routes: Routes = [
     component: ListarUsuarioComponent,
   },
   {
-    path: 'editar-usuario',
+    path: 'editar-usuarios',
     component: EditarUsuarioComponent,
   },
   {
@@ -38,15 +39,19 @@ const routes: Routes = [
   {
     path: 'registro-publico',
     component: RegistroPublicoUsuariosComponent,
-  },{
-     path: 'registrarConductor',
-     component: RegistroPublicoConductoresComponent
-  },  
+  },
+  {
+    path: 'registrarConductor',
+    component: RegistroPublicoConductoresComponent,
+  },
   {
     path: 'validar-hash-usuario-publico/:hash',
     component: ValidarHashUsuarioPublicoComponent,
   },
-  
+  {
+    path: 'registrarpqr',
+    component: FormularioContactoComponent,
+  },
 ];
 
 @NgModule({

@@ -1,0 +1,81 @@
+<div class="image-container">
+  <img
+    src="https://www.tatapower.com/images/contact_banner_laptop.jpg"
+    class="responsive-image"
+  />
+</div>
+<p class="centered-text">
+  Inicia <br />
+  una conversación <br />
+</p>
+<p class="center"> si tienes una pregunta o necesitas ayuda rellena el siguiente formulario</p>
+<br>
+<form>
+  <div class="container">
+    <div class="col s12 z-depth-6 card-panel">
+      <form [formGroup]="fGroup" class="login-form">
+        <div class="input-field">
+          <input
+            formControlName="nombreCompleto"
+            id="nombreCompleto"
+            type="text"
+            class="validate"
+            required
+          />
+          <label for="nombreCompleto">Nombre completo *</label>
+        </div>
+
+        <div class="input-field">
+          <input
+            formControlName="correo"
+            id="correo"
+            type="email"
+            class="validate"
+            required
+          />
+          <label for="correo">Correo electrónico *</label>
+        </div>
+
+        <div class="input-field">
+          <input
+            formControlName="celular"
+            id="celular"
+            type="tel"
+            class="validate"
+          />
+          <label for="celular">Celular</label>
+        </div>
+
+        <div class="input-field">
+          <textarea
+            formControlName="tipoMensaje"
+            id="tipoMensaje"
+            class="materialize-textarea"
+            required
+          ></textarea>
+          <label for="tipoMensaje">tipoMensaje *</label>
+        </div>
+
+        <div class="input-field">
+          <textarea
+            formControlName="mensaje"
+            id="mensaje"
+            class="materialize-textarea large-textarea"
+            required
+          ></textarea>
+          <label for="mensaje">Mensaje *</label>
+        </div>
+
+        <button
+          (click)="EnviarMensaje()"
+          class="btn waves-effect waves-light"
+          type="button"
+        >
+          Enviar
+        </button>
+      </form>
+    </div>
+  </div>
+</form>
+<br>
+<br>

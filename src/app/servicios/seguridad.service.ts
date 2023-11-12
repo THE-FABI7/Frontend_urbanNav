@@ -7,6 +7,8 @@ import { itemMenuModel } from '../model/item.menu.model';
 import { usuarioValidadoModel } from '../model/usuario.validado.model';
 import { permisosModel } from '../model/permisos.model';
 import { ConfiguracionMenuLateral } from '../config/configuracionMenuLateral';
+import { configRoles } from '../config/configuracion-roles';
+import { formulario } from '../model/pqrs-model';
 
 @Injectable({
   providedIn: 'root',
@@ -260,17 +262,60 @@ export class SeguridadService {
 
     if (datosSesion) {
       let ds = JSON.parse(datosSesion);
-      let foto = ds.user.Foto ;
+      let foto = ds.user.Foto;
       console.log(foto);
       return foto;
     }
     return '';
   }
 
+  obtenerRol(): string {
+    let datosSesion = localStorage.getItem('datos-sesion');
+
+    if (datosSesion) {
+      let ds = JSON.parse(datosSesion);
+      let idrol = ds.user.rolId;
+
+      let rol = '';
+
+      if (idrol == configRoles.idrolAdmin) {
+        rol = 'Administrador';
+      }
+      if (idrol == configRoles.idrolConductor) {
+        rol = 'Conductor';
+      }
+      if (idrol == configRoles.idCliente) {
+        rol = 'Cliente';
+      }
+
+      return rol;
+    }
+    return '';
+  }
 
   updateImage(file: File) {
     const formData = new FormData();
     formData.append('file', file);
     return this.http.post(`${this.urlLogica}cargar-archivo-cliente`, formData);
+  }
+
+
+  EnviarMensaje(
+    nombreCompleto: string,
+    correo: string,
+    celular: string,
+    tipoMensaje: string,
+    mensaje: string
+  ): Observable<formulario> {
+    return this.http.post<formulario>(
+      `${this.urlBase}enviar-mensaje-formulario-contacto`,
+      {
+        nombreCompleto: nombreCompleto,
+        correo: correo,
+        celular: celular,
+        tipoMensaje: tipoMensaje,
+        mensaje: mensaje,
+      }
+    );
   }
 }
