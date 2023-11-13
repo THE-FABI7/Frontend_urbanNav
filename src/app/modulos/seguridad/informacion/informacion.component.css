@@ -3,3 +3,26 @@
   height: 25vh;
   object-fit: cover;
 }
+
+.card-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.card-image {
+  width: 60%;
+  height: 25vh;
+  object-fit: cover;
+  margin: 0 auto;
+}
+
+.texto {
+  font-size: 1.2rem;
+  font-family: serif;
+}
+
+.card {
+  box-shadow: 4px 4px 4px 4px #888888;
+  height: 500px;
+  border-radius: 3%;
+}
