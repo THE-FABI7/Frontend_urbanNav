@@ -1,0 +1,12 @@
+.info-box {
+  width: 50px;
+  height: 90px;
+  padding: 10px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.black-button {
+  background-color: black;
+  color: white;
+}

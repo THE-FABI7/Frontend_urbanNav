@@ -1,0 +1,17 @@
+.black-button {
+    background-color: black;
+    color: white;
+  }
+  
+  .small-box {
+    width: 50%; /* Ajusta este valor según tus necesidades */
+    margin: auto;
+  }
+
+  .info-box {
+    width: 50px;
+    height: 90px;
+    padding: 10px;
+    box-sizing: border-box;
+    text-align: center;
+  }
