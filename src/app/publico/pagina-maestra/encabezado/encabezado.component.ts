@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { usuarioValidadoModel } from 'src/app/model/usuario.validado.model';
 import { SeguridadService } from 'src/app/servicios/seguridad.service';
 
+declare var M: any;
+
 @Component({
   selector: 'app-encabezado',
   templateUrl: './encabezado.component.html',
@@ -11,9 +13,14 @@ export class EncabezadoComponent {
   constructor(private servicioSeguridad: SeguridadService) {}
 
   sesionActiva: boolean = false;
+  
 
   ngOnInit() {
     this.ValidarSesion();
+    document.addEventListener('DOMContentLoaded', function() {
+      var elems = document.querySelectorAll('.sidenav');
+      var instances = M.Sidenav.init(elems);
+    });
   }
 
   ValidarSesion() {
