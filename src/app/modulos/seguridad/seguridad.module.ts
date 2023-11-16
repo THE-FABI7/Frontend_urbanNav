@@ -16,6 +16,7 @@ import { ValidarHashUsuarioPublicoComponent } from './validar-hash-usuario-publi
 import { RegistroPublicoConductoresComponent } from './registro-publico-conductores/registro-publico-conductores.component';
 import { FormularioContactoComponent } from './formulario-contacto/formulario-contacto.component';
 import { InformacionComponent } from './informacion/informacion.component';
+import { VistaClienteComponent } from './vista-cliente/vista-cliente.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { InformacionComponent } from './informacion/informacion.component';
     ValidarHashUsuarioPublicoComponent,
     RegistroPublicoConductoresComponent,
     FormularioContactoComponent,
-    InformacionComponent
+    InformacionComponent,
+    VistaClienteComponent
   ],
   imports: [
     CommonModule,
