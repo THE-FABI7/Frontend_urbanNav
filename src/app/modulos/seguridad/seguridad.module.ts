@@ -17,6 +17,7 @@ import { RegistroPublicoConductoresComponent } from './registro-publico-conducto
 import { FormularioContactoComponent } from './formulario-contacto/formulario-contacto.component';
 import { InformacionComponent } from './informacion/informacion.component';
 import { RecaptchaModule } from 'ng-recaptcha';
+import { VistaClienteComponent } from './vista-cliente/vista-cliente.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { RecaptchaModule } from 'ng-recaptcha';
     ValidarHashUsuarioPublicoComponent,
     RegistroPublicoConductoresComponent,
     FormularioContactoComponent,
-    InformacionComponent
+    InformacionComponent,
+    VistaClienteComponent
   ],
   imports: [
     CommonModule,

@@ -11,6 +11,7 @@ import { ValidarHashUsuarioPublicoComponent } from './validar-hash-usuario-publi
 import { RegistroPublicoConductoresComponent } from './registro-publico-conductores/registro-publico-conductores.component';
 import { FormularioContactoComponent } from './formulario-contacto/formulario-contacto.component';
 import { InformacionComponent } from './informacion/informacion.component';
+import { VistaClienteComponent } from './vista-cliente/vista-cliente.component';
 
 const routes: Routes = [
   {
@@ -57,6 +58,10 @@ const routes: Routes = [
     path: 'informacion',
     component: InformacionComponent,
   },
+  {
+    path: 'vista-cliente',
+    component: VistaClienteComponent,
+  }
 ];
 
 @NgModule({
