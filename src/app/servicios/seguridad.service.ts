@@ -217,6 +217,10 @@ export class SeguridadService {
     );
   }
 
+  RegistrarConductor(datos: any): Observable<usuarioModel>{
+    return this.http.post<usuarioModel>(`${this.urlBase}conductor-publico`, datos);
+  }
+
   ValidarHashUsuarioPublico(hash: string): Observable<boolean> {
     return this.http.post<boolean>(`${this.urlBase}validar-hash-usuario`, {
       codigoHash: hash,

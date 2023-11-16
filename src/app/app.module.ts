@@ -11,6 +11,8 @@ import { ErrorDeServidorComponent } from './publico/errores/error-de-servidor/er
 import { InicioComponent } from './publico/inicio/inicio.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RecaptchaModule } from 'ng-recaptcha';
+
 
 @NgModule({
   declarations: [
@@ -20,14 +22,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MenuLateralComponent,
     RutaNoEncontradaComponent,
     ErrorDeServidorComponent,
-    InicioComponent,
+    InicioComponent
     
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    RecaptchaModule
   ],
   providers: [],
   bootstrap: [AppComponent]

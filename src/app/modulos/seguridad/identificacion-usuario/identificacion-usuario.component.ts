@@ -14,6 +14,7 @@ export class IdentificacionUsuarioComponent {
   fGroup: FormGroup = new FormGroup({});
   captcha: string;
   email: string;
+  recaptchaResolved = false;
 
   constructor(
     private fb: FormBuilder,
@@ -22,6 +23,7 @@ export class IdentificacionUsuarioComponent {
   ) {
     this.captcha = '';
     this.email = '';
+   
   }
 
   ngOnInit() {
@@ -37,6 +39,10 @@ export class IdentificacionUsuarioComponent {
   }
 
   IdentificarUsuario() {
+    if (!this.recaptchaResolved) {
+      alert('Por favor, complete la verificación de seguridad.');
+      return;
+    }
     if (this.fGroup.invalid) {
       alert('Datos invalidos');
     } else {
@@ -68,4 +74,17 @@ export class IdentificacionUsuarioComponent {
   get obtenerFormGroup() {
     return this.fGroup.controls;
   }
+
+  resolver(captchaResponse: string) {
+    this.captcha = captchaResponse;
+    this.recaptchaResolved = true;
+    //console.log('captcha with response: ' + JSON.stringify(this.captcha));
+  }
+
+  handleResolved(captchaResponse: string) {
+    console.log(`Resolved captcha with response: ${captchaResponse}`);
+
+  }
+
+  
 }

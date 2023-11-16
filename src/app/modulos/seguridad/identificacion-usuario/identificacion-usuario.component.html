@@ -27,6 +27,19 @@
                   <label for="password">Contraseña</label>
                 </div>
               </div>
+              
+              <div class="row" style="display: flex; justify-content: center;">
+                <div class="input-field col s12" style="text-align: center;">
+                  <label for="recaptcha" class="required" style="font-size: 0.8em;">Por favor, complete la verificación de seguridad.</label>
+                  <br>  
+                  <br>
+                  <re-captcha siteKey="6Lf9wgkmAAAAALHM33koiYOLwiWtz7eBpQq_qHcY" (resolved)="resolver($event)"></re-captcha>
+                </div>
+                <div style="text-align: center;">
+                  <p style="font-size: 0.8em;">{{email}}</p>
+                </div>
+              </div>
+
               <div class="row">
                 <div class="col s6">
                   <button
@@ -52,7 +65,7 @@
               <div class="row">
                 <div class="input-field col s12">
                   <p class="margin medium-small">
-                    <a routerLink="/seguridad/registro-publico">Registrarse</a>
+                    <a routerLink="/seguridad/registro-publico">Registrarse como cliente</a>
                   </p>
                 </div>
               </div>

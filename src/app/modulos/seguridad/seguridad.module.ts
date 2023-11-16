@@ -16,7 +16,7 @@ import { ValidarHashUsuarioPublicoComponent } from './validar-hash-usuario-publi
 import { RegistroPublicoConductoresComponent } from './registro-publico-conductores/registro-publico-conductores.component';
 import { FormularioContactoComponent } from './formulario-contacto/formulario-contacto.component';
 import { InformacionComponent } from './informacion/informacion.component';
-
+import { RecaptchaModule } from 'ng-recaptcha';
 
 @NgModule({
   declarations: [
@@ -37,7 +37,9 @@ import { InformacionComponent } from './informacion/informacion.component';
   imports: [
     CommonModule,
     SeguridadRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule, 
+    RecaptchaModule
+    
   ]
 })
 export class SeguridadModule { }
