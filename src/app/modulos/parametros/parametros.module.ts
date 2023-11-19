@@ -6,6 +6,12 @@ import { CrearClienteComponent } from './cliente/crear-cliente/crear-cliente.com
 import { ListarClienteComponent } from './cliente/listar-cliente/listar-cliente.component';
 import { EditarClienteComponent } from './cliente/editar-cliente/editar-cliente.component';
 import { EliminarClienteComponent } from './cliente/eliminar-cliente/eliminar-cliente.component';
+import { CrearAutomovilComponent } from './automovil/crear-automovil/crear-automovil.component';
+import { ListarAutomovilComponent } from './automovil/listar-automovil/listar-automovil.component';
+import { EditarAutomovilComponent } from './automovil/editar-automovil/editar-automovil.component';
+import { EliminarAutomovilComponent } from './automovil/eliminar-automovil/eliminar-automovil.component';
+import { CrearComentarioComponent } from './comentario/crear-comentario/crear-comentario.component';
+import { ListarComentarioComponent } from './comentario/listar-comentario/listar-comentario.component';
 
 
 @NgModule({
@@ -13,7 +19,13 @@ import { EliminarClienteComponent } from './cliente/eliminar-cliente/eliminar-cl
     CrearClienteComponent,
     ListarClienteComponent,
     EditarClienteComponent,
-    EliminarClienteComponent
+    EliminarClienteComponent,
+    CrearAutomovilComponent,
+    ListarAutomovilComponent,
+    EditarAutomovilComponent,
+    EliminarAutomovilComponent,
+    CrearComentarioComponent,
+    ListarComentarioComponent,
   ],
   imports: [
     CommonModule,

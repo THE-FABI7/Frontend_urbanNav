@@ -9,6 +9,7 @@ import { permisosModel } from '../model/permisos.model';
 import { ConfiguracionMenuLateral } from '../config/configuracionMenuLateral';
 import { configRoles } from '../config/configuracion-roles';
 import { formulario } from '../model/pqrs-model';
+import { conductorModel } from '../model/conductor.model';
 
 @Injectable({
   providedIn: 'root',
@@ -217,8 +218,12 @@ export class SeguridadService {
     );
   }
 
-  RegistrarConductor(datos: any): Observable<usuarioModel>{
-    return this.http.post<usuarioModel>(`${this.urlBase}conductor-publico`, datos);
+  RegistrarConductor(datos: any): Observable<conductorModel>{
+    return this.http.post<conductorModel>(`${this.urlBase}conductor-publico`, datos);
+  }
+
+  RegistrarConductorLogica(datos: any): Observable<conductorModel>{
+    return this.http.post<conductorModel>(`${this.urlLogica}conductor-publico`, datos);
   }
 
   ValidarHashUsuarioPublico(hash: string): Observable<boolean> {

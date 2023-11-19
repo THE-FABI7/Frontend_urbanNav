@@ -12,6 +12,7 @@ import { RegistroPublicoConductoresComponent } from './registro-publico-conducto
 import { FormularioContactoComponent } from './formulario-contacto/formulario-contacto.component';
 import { InformacionComponent } from './informacion/informacion.component';
 import { VistaClienteComponent } from './vista-cliente/vista-cliente.component';
+import { AceptarTerminosComponent } from './aceptar-terminos/aceptar-terminos.component';
 
 const routes: Routes = [
   {
@@ -61,6 +62,9 @@ const routes: Routes = [
   {
     path: 'vista-cliente',
     component: VistaClienteComponent,
+  },{
+    path: 'aceptar-terminos',
+    component: AceptarTerminosComponent
   }
 ];
 

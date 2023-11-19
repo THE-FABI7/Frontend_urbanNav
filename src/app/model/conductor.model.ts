@@ -1,5 +1,5 @@
 export class conductorModel {
-    _id?: string;
+  _id?: string;
 
   Nombre?: string;
 
@@ -14,7 +14,6 @@ export class conductorModel {
   correo?: string;
 
   FechaNacimiento?: string;
-  
-  Vigencia?: string;
 
+  Vigencia?: string;
 }

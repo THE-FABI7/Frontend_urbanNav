@@ -1,20 +1,22 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { conductorModel } from 'src/app/model/conductor.model';
 import { usuarioModel } from 'src/app/model/usuario.model';
 import { SeguridadService } from 'src/app/servicios/seguridad.service';
 
 @Component({
   selector: 'app-registro-publico-conductores',
   templateUrl: './registro-publico-conductores.component.html',
-  styleUrls: ['./registro-publico-conductores.component.css']
+  styleUrls: ['./registro-publico-conductores.component.css'],
 })
 export class RegistroPublicoConductoresComponent {
-
   fGroup: FormGroup = new FormGroup({});
 
   constructor(
     private fb: FormBuilder,
-    private servicioSeguridad: SeguridadService
+    private servicioSeguridad: SeguridadService,
+    private router: Router
   ) {}
   ngOnInit() {
     this.construirFormulario();
@@ -37,33 +39,58 @@ export class RegistroPublicoConductoresComponent {
       alert('Se deben llenar todos los campos');
     }
 
-    let campos = this.ObtenerFormGroup;
-    let datos = {
-      Nombre: campos['name'].value,
-      Apellido: campos['sobrename'].value,
-      Telefono: campos['phoneNumber'].value,
-      correo: campos['emailAddress'].value,
-      FechaNacimiento: campos['birthdate'].value,
-      // Fechavigencia: campos['vigencia'].value
-      // password: campos['password'].value,
-    };
+    try {
+      let campos = this.ObtenerFormGroup;
+      let datos = {
+        Nombre: campos['name'].value,
+        Apellido: campos['sobrename'].value,
+        Telefono: campos['phoneNumber'].value,
+        correo: campos['emailAddress'].value,
+        FechaNacimiento: campos['birthdate'].value,
+        // Fechavigencia: campos['vigencia'].value
+        // password: campos['password'].value,
+      };
 
-    this.servicioSeguridad.RegistrarConductor(datos).subscribe({
-      next: (respuesta: usuarioModel) => {
-        alert(
-          'Registro correctamente, se ha enviado un mensaje para validar el correo'
-        );
-      },
-      error: (err) => {
-        console.log(err);
-        alert('se ha producido un error de registro');
-      },
-    });
+      // let campos = this.ObtenerFormGroup;
+      let datosLogica = {
+        Nombre: campos['name'].value,
+        Apellido: campos['sobrename'].value,
+        Telefono: campos['phoneNumber'].value,
+        Correo: campos['emailAddress'].value,
+        FechaDeNacimiento: campos['birthdate'].value,
+        Vigencia: campos['vigencia'].value,
+        // password: camposLogica['password'].value,
+      };
+
+      this.servicioSeguridad.RegistrarConductor(datos).subscribe({
+        next: (respuesta: usuarioModel) => {
+          console.log(
+            'Registro correctamente, se ha enviado un mensaje para validar el correo'
+          );
+
+          this.servicioSeguridad
+            .RegistrarConductorLogica(datosLogica)
+            .subscribe({
+              next: (respuesta: conductorModel) => {
+                console.log('Logica ok');
+                this.router.navigate(['/seguridad/aceptar-terminos']); // Navega a aceptarTerminos
+              },
+              error: (err) => {
+                console.log(err);
+              },
+            });
+        },
+        error: (err) => {
+          console.log(err);
+        },
+      });
+    } catch (error) {
+      console.log(error);
+      alert('algo salio Mal');
+    }
   }
 
   get ObtenerFormGroup() {
     return this.fGroup.controls;
   }
-
-
 }

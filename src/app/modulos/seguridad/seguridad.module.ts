@@ -18,6 +18,7 @@ import { FormularioContactoComponent } from './formulario-contacto/formulario-co
 import { InformacionComponent } from './informacion/informacion.component';
 import { RecaptchaModule } from 'ng-recaptcha';
 import { VistaClienteComponent } from './vista-cliente/vista-cliente.component';
+import { AceptarTerminosComponent } from './aceptar-terminos/aceptar-terminos.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { VistaClienteComponent } from './vista-cliente/vista-cliente.component';
     RegistroPublicoConductoresComponent,
     FormularioContactoComponent,
     InformacionComponent,
-    VistaClienteComponent
+    VistaClienteComponent,
+    AceptarTerminosComponent
   ],
   imports: [
     CommonModule,

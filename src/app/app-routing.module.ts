@@ -20,10 +20,16 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'parametros',
+    loadChildren: () =>
+      import('./modulos/parametros/parametros.module').then(
+        (m) => m.ParametrosModule
+      ),
+  },
+  {
     path: '**',
-    component: RutaNoEncontradaComponent
-  }
-
+    component: RutaNoEncontradaComponent,
+  },
 ];
 
 @NgModule({

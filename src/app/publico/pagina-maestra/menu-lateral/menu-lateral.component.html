@@ -28,7 +28,10 @@
     </div>
   </li>
   <li *ngFor="let m of listaMenus">
-    <a routerLink="{{ m.ruta }}">{{ m.texto }}</a>
+    <a routerLink="{{ m.ruta }}">
+      <i class="material-icons">{{ m.icono }}</i>
+      {{ m.texto }}
+    </a>
   </li>
 
   <li>
