@@ -10,6 +10,7 @@ import { ConfiguracionMenuLateral } from '../config/configuracionMenuLateral';
 import { configRoles } from '../config/configuracion-roles';
 import { formulario } from '../model/pqrs-model';
 import { conductorModel } from '../model/conductor.model';
+import { cambiarclavemodel } from '../model/cambiarclave.model';
 
 @Injectable({
   providedIn: 'root',
@@ -211,6 +212,21 @@ export class SeguridadService {
     });
   }
 
+/**
+ * La función `CambiarClave` envía una solicitud PATCH a la URL especificada con los datos
+ * proporcionados y devuelve un Observable de tipo `cambiarclavemodel`.
+ * @param {any} datos - El parámetro "datos" es de tipo "cualquiera", lo que significa que puede ser
+ * cualquier tipo de dato. Se utiliza como carga útil para la solicitud HTTP PATCH al punto final
+ * "cambiar-clave".
+ * @returns un Observable de tipo "cambiarclavemodel".
+ */
+  CambiarClave(datos: any): Observable<cambiarclavemodel> {
+    return this.http.patch<cambiarclavemodel>(
+      `${this.urlBase}cambiar-clave`,
+      datos
+    );
+  }
+
   RegistrarUsuarioPublico(datos: any): Observable<usuarioModel> {
     return this.http.post<usuarioModel>(
       `${this.urlBase}usuario-publico`,
@@ -218,12 +234,18 @@ export class SeguridadService {
     );
   }
 
-  RegistrarConductor(datos: any): Observable<conductorModel>{
-    return this.http.post<conductorModel>(`${this.urlBase}conductor-publico`, datos);
+  RegistrarConductor(datos: any): Observable<conductorModel> {
+    return this.http.post<conductorModel>(
+      `${this.urlBase}conductor-publico`,
+      datos
+    );
   }
 
-  RegistrarConductorLogica(datos: any): Observable<conductorModel>{
-    return this.http.post<conductorModel>(`${this.urlLogica}conductor-publico`, datos);
+  RegistrarConductorLogica(datos: any): Observable<conductorModel> {
+    return this.http.post<conductorModel>(
+      `${this.urlLogica}conductor-publico`,
+      datos
+    );
   }
 
   ValidarHashUsuarioPublico(hash: string): Observable<boolean> {
@@ -307,7 +329,6 @@ export class SeguridadService {
     formData.append('file', file);
     return this.http.post(`${this.urlLogica}cargar-archivo-cliente`, formData);
   }
-
 
   EnviarMensaje(
     nombreCompleto: string,

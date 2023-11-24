@@ -1,0 +1,99 @@
+<br />
+<br />
+<div id="login-page" class="row small-box">
+  <div class="col s12 z-depth-6 card-panel">
+    <form [formGroup]="fGroup" class="login-form">
+      <div class="row"></div>
+      <div class="row">
+        <div class="info-box col s12">
+          <h2>cambiar clave</h2>
+          <p>Por favor ingrese los datos para cambiar la clave</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <i class="material-icons prefix">mail_outline</i>
+          <input
+            formControlName="correo"
+            class="validate"
+            id="email"
+            type="email"
+          />
+          <label for="email" data-error="wrong" data-success="right"
+            >Usuario</label
+          >
+          <div
+            class="show-errors"
+            *ngIf="
+              obtenerFormGroup['correo'].errors &&
+              (obtenerFormGroup['correo'].dirty ||
+                obtenerFormGroup['correo'].touched)
+            "
+          >
+            <strong
+              >Este campo es obligatorio y debe tener el formato de correo
+              electrónico</strong
+            >
+          </div>
+        </div>
+        <div class="input-field col s12">
+          <i class="material-icons prefix">password</i>
+          <input
+            formControlName="claveActual"
+            class="validate"
+            id="claveActual"
+            type="password"
+          />
+          <label for="password" data-error="wrong" data-success="right"
+            >clave actual</label
+          >
+          <div
+            class="show-errors"
+            *ngIf="
+              obtenerFormGroup['claveActual'].errors &&
+              (obtenerFormGroup['claveActual'].dirty ||
+                obtenerFormGroup['claveActual'].touched)
+            "
+          >
+            <strong>Este campo es obligatorio </strong>
+          </div>
+        </div>
+        <div class="input-field col s12">
+          <i class="material-icons prefix">password</i>
+          <input
+            formControlName="claveNueva"
+            class="validate"
+            id="claveNueva"
+            type="password"
+          />
+          <label for="password" data-error="wrong" data-success="right"
+            >clave Nueva</label
+          >
+          <div
+            class="show-errors"
+            *ngIf="
+              obtenerFormGroup['claveNueva'].errors &&
+              (obtenerFormGroup['claveNueva'].dirty ||
+                obtenerFormGroup['claveNueva'].touched)
+            "
+          >
+            <strong>Este campo es obligatorio </strong>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <button
+            (click)="CambiarClave()"
+            class="btn waves-effect waves-light col s12 black-button"
+          >
+            Recuperar
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<br />
+<br />
+<br />

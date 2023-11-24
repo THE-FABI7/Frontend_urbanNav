@@ -13,6 +13,7 @@ import { FormularioContactoComponent } from './formulario-contacto/formulario-co
 import { InformacionComponent } from './informacion/informacion.component';
 import { VistaClienteComponent } from './vista-cliente/vista-cliente.component';
 import { AceptarTerminosComponent } from './aceptar-terminos/aceptar-terminos.component';
+import { CambiarclaveComponent } from './cambiarclave/cambiarclave.component';
 
 const routes: Routes = [
   {
@@ -62,10 +63,15 @@ const routes: Routes = [
   {
     path: 'vista-cliente',
     component: VistaClienteComponent,
-  },{
+  },
+  {
     path: 'aceptar-terminos',
-    component: AceptarTerminosComponent
-  }
+    component: AceptarTerminosComponent,
+  },
+  {
+    path: 'cambiar-clave',
+    component: CambiarclaveComponent,
+  },
 ];
 
 @NgModule({
