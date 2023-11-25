@@ -16,4 +16,6 @@ export class usuarioModel {
   FechaNacimiento?: string;
 
   rolId?: string;
+
+  NumEmergencia?: string;
 }

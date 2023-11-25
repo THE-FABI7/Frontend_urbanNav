@@ -248,6 +248,15 @@ export class SeguridadService {
     );
   }
 
+  RegistroClienteLogica(datos:any): Observable<usuarioModel>{
+    console.log(datos)
+    return this.http.post<usuarioModel>(
+      `${this.urlLogica}cliente-publico`,
+      datos
+    );
+  }
+
+
   ValidarHashUsuarioPublico(hash: string): Observable<boolean> {
     return this.http.post<boolean>(`${this.urlBase}validar-hash-usuario`, {
       codigoHash: hash,

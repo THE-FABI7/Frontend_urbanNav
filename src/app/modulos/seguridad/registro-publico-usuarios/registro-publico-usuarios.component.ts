@@ -26,6 +26,7 @@ export class RegistroPublicoUsuariosComponent {
       emailAddress: ['', [Validators.required]],
       birthdate: ['', [Validators.required, Validators.minLength(10)]],
       // password: ['', [Validators.required, Validators.minLength(5)]],
+      NumEmergencia: ['', [Validators.required, Validators.minLength(10)]],
     });
   }
 
@@ -44,16 +45,39 @@ export class RegistroPublicoUsuariosComponent {
       // password: campos['password'].value,
     };
 
+    let datosLogica = {
+      Nombre: campos['name'].value,
+      Apellido: campos['sobrename'].value,
+      Telefono: campos['phoneNumber'].value,
+      Correo: campos['emailAddress'].value,
+      FechaDeNacimiento: campos['birthdate'].value,
+      NumEmergencia: campos['NumEmergencia'].value
+
+    }
+
     this.servicioSeguridad.RegistrarUsuarioPublico(datos).subscribe({
       next: (respuesta: usuarioModel) => {
         alert(
           'Registro correctamente, se ha enviado un mensaje para validar el correo'
         );
+        this.servicioSeguridad.RegistroClienteLogica(datosLogica).subscribe({
+          next: (respuesta: usuarioModel) => {
+            console.log(
+              'Registro correctamente, se ha enviado un mensaje para validar el correo'
+            );
+          },
+          error: (err) => {
+            console.log(err);
+          },
+
+        }
+        
+        )
       },
       error: (err) => {
         console.log(err);
-        alert('se ha producido un error de registro');
       },
+      
     });
   }
 
