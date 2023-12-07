@@ -296,6 +296,21 @@ export class SeguridadService {
     }
     return '';
   }
+  
+  buscarIdUsuarioPorCorreo(correo: string){
+    return this.http.get(`${this.urlLogica}cliente?correo=${correo}`);
+  }
+
+  Registrarse(){
+    let correo = localStorage.getItem('datos-sesion');
+    if (correo) {
+      this.buscarIdUsuarioPorCorreo(correo).subscribe((usuario: any) => {
+        let idUsuario = usuario.id;
+        // Aquí puedes usar idUsuario para solicitar un viaje
+        alert(' el id del usuario en logica es: ' + idUsuario)
+      });
+    }
+  }
 
   obtenerFoto(): string {
     let datosSesion = localStorage.getItem('datos-sesion');

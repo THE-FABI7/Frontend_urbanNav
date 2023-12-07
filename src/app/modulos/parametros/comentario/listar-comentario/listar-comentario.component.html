@@ -1,18 +1,24 @@
 <div class="row" *ngFor="let comentario of lisarComentarios">
   <div class="col s12 m6">
-    <div class="card blue-grey darken-1">
-      <div class="card-content white-text">
+    <div class="card white comentario">
+      <div class="card-content black-text">
         <span class="card-title">Comentario del Conductor</span>
-        <p>Calificación: {{comentario.CalificacionConductor}}</p>
+        <p>
+          Calificación: 
+          <i class="material-icons yellow-text">star</i> {{comentario.CalificacionConductor}}
+        </p>
         <p>Comentario: {{comentario.ComentarioConductor}}</p>
       </div>
     </div>
   </div>
   <div class="col s12 m6">
-    <div class="card blue-grey darken-1">
-      <div class="card-content white-text">
+    <div class="card white comentario">
+      <div class="card-content black-text">
         <span class="card-title">Comentario del Cliente</span>
-        <p>Calificación: {{comentario.CalificacionCliente}}</p>
+        <p>
+          Calificación: 
+          <i class="material-icons yellow-text">star</i> {{comentario.CalificacionCliente}}
+        </p>
         <p>Comentario: {{comentario.ComentarioCliente}}</p>
       </div>
     </div>

@@ -41,7 +41,7 @@ export class RegistroPublicoUsuariosComponent {
       Apellido: campos['sobrename'].value,
       Telefono: campos['phoneNumber'].value,
       correo: campos['emailAddress'].value,
-      FechaNacimiento: campos['birthdate'].value
+      FechaNacimiento: campos['birthdate'].value,
       // password: campos['password'].value,
     };
 
@@ -51,9 +51,8 @@ export class RegistroPublicoUsuariosComponent {
       Telefono: campos['phoneNumber'].value,
       Correo: campos['emailAddress'].value,
       FechaDeNacimiento: campos['birthdate'].value,
-      NumEmergencia: campos['NumEmergencia'].value
-
-    }
+      NumEmergencia: campos['NumEmergencia'].value,
+    };
 
     this.servicioSeguridad.RegistrarUsuarioPublico(datos).subscribe({
       next: (respuesta: usuarioModel) => {
@@ -69,16 +68,14 @@ export class RegistroPublicoUsuariosComponent {
           error: (err) => {
             console.log(err);
           },
-
-        }
-        
-        )
+        });
       },
       error: (err) => {
         console.log(err);
       },
-      
-    });
+    },
+    
+    );
   }
 
   get ObtenerFormGroup() {
