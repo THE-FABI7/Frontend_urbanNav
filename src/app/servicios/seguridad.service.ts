@@ -132,6 +132,13 @@ export class SeguridadService {
     }
   }
 
+  /**
+   * La función "ActualizarComportamientoUsuario" actualiza el comportamiento de un usuario validado.
+   * @param {usuarioValidadoModel} datos - El parámetro "datos" es de tipo "usuarioValidadoModel", que
+   * es un modelo que representa datos de usuario validados.
+   * @returns el resultado de llamar al método `next` sobre el objeto `datosUsuarioValidado`, pasando
+   * el parámetro `datos`.
+   */
   ActualizarComportamientoUsuario(datos: usuarioValidadoModel) {
     return this.datosUsuarioValidado.next(datos);
   }
@@ -179,10 +186,22 @@ export class SeguridadService {
     new usuarioValidadoModel()
   );
 
+  /**
+   * La función "ObtenerDatosSesion" devuelve un Observable de tipo "usuarioValidadoModel" que
+   * representa los datos del usuario validado.
+   * @returns El método `ObtenerDatosSesion()` está devolviendo un `Observable` de tipo
+   * `usuarioValidadoModel`.
+   */
   ObtenerDatosSesion(): Observable<usuarioValidadoModel> {
     return this.datosUsuarioValidado.asObservable();
   }
 
+  /**
+   * La función "validacionDeSesion" comprueba si hay una sesión válida almacenada en el almacenamiento
+   * local y devuelve el objeto de usuario si existe, en caso contrario devuelve nulo.
+   * @returns ya sea un objeto de tipo `usuarioValidadoModel` si hay una sesión válida almacenada en el
+   * almacenamiento local, o `null` si no hay una sesión válida.
+   */
   validacionDeSesion(): usuarioValidadoModel | null {
     let ls = localStorage.getItem('datos-sesion');
     if (ls) {
@@ -193,6 +212,10 @@ export class SeguridadService {
     return null;
   }
 
+  /**
+   * La función "RemoverDatosUsuarioValidado" elimina los datos del usuario validados del
+   * almacenamiento local y actualiza el comportamiento del usuario.
+   */
   RemoverDatosUsuarioValidado() {
     let datosUsuario = localStorage.getItem('datos-usuario');
     let datosSesion = localStorage.getItem('datos-sesion');
@@ -206,20 +229,27 @@ export class SeguridadService {
     this.ActualizarComportamientoUsuario(new usuarioValidadoModel());
   }
 
+  /**
+   * La función "RecuperarClavePorUsuario" envía una solicitud POST al servidor para recuperar la
+   * contraseña de un usuario mediante su correo electrónico.
+   * @param {string} usuario - El parámetro `usuario` es una cadena que representa el nombre de usuario
+   * o correo electrónico del usuario del cual desea recuperar la contraseña.
+   * @returns un Observable de tipo `usuarioModel`.
+   */
   RecuperarClavePorUsuario(usuario: string): Observable<usuarioModel> {
     return this.http.post<usuarioModel>(`${this.urlBase}recuperar-clave`, {
       correo: usuario,
     });
   }
 
-/**
- * La función `CambiarClave` envía una solicitud PATCH a la URL especificada con los datos
- * proporcionados y devuelve un Observable de tipo `cambiarclavemodel`.
- * @param {any} datos - El parámetro "datos" es de tipo "cualquiera", lo que significa que puede ser
- * cualquier tipo de dato. Se utiliza como carga útil para la solicitud HTTP PATCH al punto final
- * "cambiar-clave".
- * @returns un Observable de tipo "cambiarclavemodel".
- */
+  /**
+   * La función `CambiarClave` envía una solicitud PATCH a la URL especificada con los datos
+   * proporcionados y devuelve un Observable de tipo `cambiarclavemodel`.
+   * @param {any} datos - El parámetro "datos" es de tipo "cualquiera", lo que significa que puede ser
+   * cualquier tipo de dato. Se utiliza como carga útil para la solicitud HTTP PATCH al punto final
+   * "cambiar-clave".
+   * @returns un Observable de tipo "cambiarclavemodel".
+   */
   CambiarClave(datos: any): Observable<cambiarclavemodel> {
     return this.http.patch<cambiarclavemodel>(
       `${this.urlBase}cambiar-clave`,
@@ -227,6 +257,14 @@ export class SeguridadService {
     );
   }
 
+  /**
+   * La función `RegistrarUsuarioPublico` envía una solicitud POST al servidor para registrar un nuevo
+   * usuario público con los datos proporcionados.
+   * @param {any} datos - El parámetro "datos" es de tipo "cualquiera", lo que significa que puede
+   * aceptar cualquier tipo de datos. Representa los datos que se enviarán en la solicitud HTTP POST
+   * para crear un nuevo usuario público.
+   * @returns un Observable de tipo `usuarioModel`.
+   */
   RegistrarUsuarioPublico(datos: any): Observable<usuarioModel> {
     return this.http.post<usuarioModel>(
       `${this.urlBase}usuario-publico`,
@@ -234,6 +272,13 @@ export class SeguridadService {
     );
   }
 
+  /**
+   * La función `RegistrarConductor` envía una solicitud POST al servidor para registrar un nuevo
+   * conductor con los datos proporcionados.
+   * @param {any} datos - El parámetro "datos" es de tipo "cualquiera", lo que significa que puede
+   * aceptar cualquier tipo de datos. Se utiliza como carga útil para la solicitud HTTP POST.
+   * @returns un Observable de tipo conductorModel.
+   */
   RegistrarConductor(datos: any): Observable<conductorModel> {
     return this.http.post<conductorModel>(
       `${this.urlBase}conductor-publico`,
@@ -241,6 +286,14 @@ export class SeguridadService {
     );
   }
 
+  /**
+   * La función `RegistrarConductorLogica` envía una solicitud POST a una URL específica con los datos
+   * proporcionados y devuelve un Observable de tipo `conductorModel`.
+   * @param {any} datos - El parámetro "datos" es de tipo "cualquiera", lo que significa que puede
+   * aceptar cualquier tipo de datos. Se utiliza como carga útil para la solicitud HTTP POST a la URL
+   * especificada.
+   * @returns un Observable de tipo conductorModel.
+   */
   RegistrarConductorLogica(datos: any): Observable<conductorModel> {
     return this.http.post<conductorModel>(
       `${this.urlLogica}conductor-publico`,
@@ -248,21 +301,41 @@ export class SeguridadService {
     );
   }
 
-  RegistroClienteLogica(datos:any): Observable<usuarioModel>{
-    console.log(datos)
+  /**
+   * La función `RegistroClienteLogica` envía una solicitud POST a una URL especificada con los datos
+   * proporcionados y devuelve un Observable de tipo `usuarioModel`.
+   * @param {any} datos - El parámetro "datos" es de tipo "cualquiera" lo que significa que puede
+   * aceptar cualquier tipo de dato. Se utiliza para pasar los datos del cliente a registrar.
+   * @returns un Observable de tipo `usuarioModel`.
+   */
+  RegistroClienteLogica(datos: any): Observable<usuarioModel> {
+    console.log(datos);
     return this.http.post<usuarioModel>(
       `${this.urlLogica}cliente-publico`,
       datos
     );
   }
 
-
+  /**
+   * La función `ValidarHashUsuarioPublico` toma una cadena hash como entrada y envía una solicitud
+   * POST a una URL específica para validar el hash.
+   * @param {string} hash - Una cadena que representa el código hash de un usuario.
+   * @returns un Observable de tipo booleano.
+   */
   ValidarHashUsuarioPublico(hash: string): Observable<boolean> {
     return this.http.post<boolean>(`${this.urlBase}validar-hash-usuario`, {
       codigoHash: hash,
     });
   }
 
+  /**
+   * La función "obtenerCorreo" recupera la dirección de correo electrónico a partir de los datos de
+   * sesión del usuario almacenados en el almacenamiento local.
+   * @returns una cadena, que es la dirección de correo electrónico almacenada en el elemento
+   * 'datos-sesion' en localStorage. Si el elemento 'datos-sesion' existe y contiene una dirección de
+   * correo electrónico válida, se devolverá esa dirección de correo electrónico. De lo contrario, se
+   * devolverá una cadena vacía.
+   */
   obtenerCorreo(): string {
     let datosSesion = localStorage.getItem('datos-sesion');
 
@@ -274,6 +347,12 @@ export class SeguridadService {
     }
     return '';
   }
+  /**
+   * La función "obtenerIdUsuario" recupera el ID de usuario del almacenamiento local si existe, de lo
+   * contrario devuelve una cadena vacía.
+   * @returns la identificación del usuario si existe en el almacenamiento local; de lo contrario,
+   * devuelve una cadena vacía.
+   */
   obtenerIdUsuario(): string {
     let datosSesion = localStorage.getItem('datos-sesion');
 
@@ -285,6 +364,11 @@ export class SeguridadService {
     }
     return '';
   }
+  /**
+   * La función "obtenerNombreCompleto" recupera el nombre completo de un usuario del almacenamiento
+   * local y lo devuelve como una cadena.
+   * @returns un valor de cadena, que es el nombre completo del usuario.
+   */
   obtenerNombreCompleto(): string {
     let datosSesion = localStorage.getItem('datos-sesion');
 
@@ -296,22 +380,32 @@ export class SeguridadService {
     }
     return '';
   }
-  
-  buscarIdUsuarioPorCorreo(correo: string){
+
+  //TODO: falta verifiar si esto funciona, debe retornar el id de la logica para lograr hacer la solicitud de un servicio
+  buscarIdUsuarioPorCorreo(correo: string) {
     return this.http.get(`${this.urlLogica}cliente?correo=${correo}`);
   }
 
-  Registrarse(){
+  /**
+   * La función "Registrarse" recupera el correo electrónico del usuario del almacenamiento local, busca
+   * el ID de usuario correspondiente y luego utiliza ese ID para solicitar un viaje.
+   */
+  Registrarse() {
     let correo = localStorage.getItem('datos-sesion');
     if (correo) {
       this.buscarIdUsuarioPorCorreo(correo).subscribe((usuario: any) => {
         let idUsuario = usuario.id;
         // Aquí puedes usar idUsuario para solicitar un viaje
-        alert(' el id del usuario en logica es: ' + idUsuario)
+        alert(' el id del usuario en logica es: ' + idUsuario);
       });
     }
   }
 
+  /**
+   * La función "obtenerFoto" recupera la foto del usuario del almacenamiento local si existe, en caso
+   * contrario devuelve una cadena vacía.
+   * @returns una cadena, que es el valor de la variable "foto".
+   */
   obtenerFoto(): string {
     let datosSesion = localStorage.getItem('datos-sesion');
 
@@ -324,6 +418,11 @@ export class SeguridadService {
     return '';
   }
 
+  /**
+   * La función "obtenerRol" recupera el rol de un usuario del almacenamiento local y lo devuelve como
+   * una cadena.
+   * @returns una cadena que representa el rol del usuario.
+   */
   obtenerRol(): string {
     let datosSesion = localStorage.getItem('datos-sesion');
 
@@ -348,12 +447,28 @@ export class SeguridadService {
     return '';
   }
 
+  //TODO: esto no funciona
   updateImage(file: File) {
     const formData = new FormData();
     formData.append('file', file);
     return this.http.post(`${this.urlLogica}cargar-archivo-cliente`, formData);
   }
 
+  /**
+   * La función envía un mensaje con información de contacto y contenido del mensaje a una URL
+   * específica.
+   * @param {string} nombreCompleto - El nombre completo de la persona que envía el mensaje.
+   * @param {string} correo - El parámetro "correo" representa la dirección de correo electrónico de la
+   * persona que envía el mensaje.
+   * @param {string} celular - El parámetro "celular" es una cadena que representa el número de
+   * teléfono de la persona que envía el mensaje.
+   * @param {string} tipoMensaje - El parámetro "tipoMensaje" es una cadena que representa el tipo de
+   * mensaje que se envía. Podría ser algo así como "Consulta", "Sugerencia" (sugerencia), "Reclamo"
+   * (queja), etc.
+   * @param {string} mensaje - El parámetro "mensaje" es una cadena que representa el contenido del
+   * mensaje que se enviará.
+   * @returns un Observable de tipo "formulario".
+   */
   EnviarMensaje(
     nombreCompleto: string,
     correo: string,
