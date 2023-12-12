@@ -1,0 +1,14 @@
+<h1 class="titulo">Mis Viajes</h1>
+
+<div class="container">
+  <div class="card" *ngFor="let viaje of viajes">
+    <!-- El resto de tu código -->
+    <span class="card-title">{{ viaje.Origen }} - {{ viaje.Destino }}</span>
+    <p>Fecha: {{ viaje.Fecha }}</p>
+    <p>Cliente ID: {{ viaje.clienteId }}</p>
+    <p>Conductor ID: {{ viaje.conductorId }}</p>
+    <p>Factura ID: {{ viaje.facturaId }}</p>
+    <p>Comentario ID: {{ viaje.comentarioId }}</p>
+    <p>Estado Solicitud ID: {{ viaje.estadoSolicitudId }}</p>
+  </div>
+</div>

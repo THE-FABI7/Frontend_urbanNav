@@ -33,7 +33,7 @@ export namespace ConfiguracionMenuLateral {
     },
     {
       id: '65271650fbe5d80a60a34578',
-      ruta: '/parametros/administrador-info',
+      ruta: '/parametros/listar-Viajes',
       icono: "local_shipping",
       texto: 'Viaje',
     },

@@ -12,6 +12,8 @@ import { EditarAutomovilComponent } from './automovil/editar-automovil/editar-au
 import { EliminarAutomovilComponent } from './automovil/eliminar-automovil/eliminar-automovil.component';
 import { CrearComentarioComponent } from './comentario/crear-comentario/crear-comentario.component';
 import { ListarComentarioComponent } from './comentario/listar-comentario/listar-comentario.component';
+import { ListarViajesComponent } from './viajes/listar-viajes/listar-viajes.component';
+import { ListarPagosComponent } from './pagos/listar-pagos/listar-pagos.component';
 
 
 @NgModule({
@@ -26,6 +28,8 @@ import { ListarComentarioComponent } from './comentario/listar-comentario/listar
     EliminarAutomovilComponent,
     CrearComentarioComponent,
     ListarComentarioComponent,
+    ListarViajesComponent,
+    ListarPagosComponent,
   ],
   imports: [
     CommonModule,
