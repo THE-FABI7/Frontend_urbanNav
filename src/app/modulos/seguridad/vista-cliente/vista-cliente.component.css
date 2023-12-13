@@ -8,10 +8,14 @@
     margin: 0;
 }
 
-#map {
-    height: 800px; /* Ajusta este valor para cambiar el tamaño del mapa */
-    width: 800px; /* Ajusta este valor para cambiar el tamaño del mapa */
-    border-radius: 20px; /* Ajusta este valor para cambiar el redondeo de los bordes */
-    border: 2px solid black; /* Ajusta este valor para cambiar el color y el grosor del borde */
-    margin: 80px; 
- }
+/* Estilos por defecto para pantallas grandes */
+.input-field {
+    font-size: 16px;
+  }
+  
+  /* Estilos específicos para pantallas pequeñas */
+  @media screen and (max-width: 600px) {
+    .input-field {
+      font-size: 16px; /* Mantén el tamaño original de las letras */
+    }
+  }    

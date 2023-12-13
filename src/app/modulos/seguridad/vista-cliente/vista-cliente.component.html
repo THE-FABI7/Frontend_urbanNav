@@ -3,17 +3,27 @@
     <div id="forma">
       <form [formGroup]="fGroup">
         <div class="input-field col s12">
-          <input formControlName="origen" id="origen" />
+          <select formControlName="origen" id="origen">
+            <option value="" disabled selected>Elige tu origen</option>
+            <option value="653fdc18224f421c5ce4991d">Fatima</option>
+            <option value="653fdc49224f421c5ce4991e">Enea</option>
+            <!-- Agrega más opciones según sea necesario -->
+          </select>
           <label for="origen">Origen</label>
         </div>
 
         <div class="input-field col s12">
-          <input formControlName="destino" id="destino" />
+          <select formControlName="destino" id="destino">
+            <option value="" disabled selected>Elige tu destino</option>
+            <option value="653fdc18224f421c5ce4991d">Fatima</option>
+            <option value="653fdc49224f421c5ce4991e">Enea</option>
+            <!-- Agrega más opciones según sea necesario -->
+          </select>
           <label for="destino">Destino</label>
         </div>
 
         <button
-          class="btn waves-effect waves-light"
+          class="btn waves-effect waves-light ml100"
           (click)="solicitarServicio()"
           [disabled]="!fGroup.valid"
         >
@@ -23,6 +33,6 @@
     </div>
   </div>
 
-  <div id="map" style="height: 300px"></div>
+  <!-- <div id="map" style="height: 300px"></div> -->
+  
 </div>
-<!-- <script src="https://maps.googleapis.com/maps/api/js?key=6Lf9wgkmAAAAALHM33koiYOLwiWtz7eBpQq_qHcY&callback=initMap" async defer></script> -->

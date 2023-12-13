@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SeguridadService } from 'src/app/servicios/seguridad.service';
 import * as L from 'leaflet';
+import { AfterViewInit, ElementRef } from '@angular/core';
+import * as M from 'materialize-css';
 
 @Component({
   selector: 'app-vista-cliente',
@@ -15,7 +17,8 @@ export class VistaClienteComponent {
 
   constructor(
     private fb: FormBuilder,
-    private servicioSeguridad: SeguridadService
+    private servicioSeguridad: SeguridadService,
+    private elementRef: ElementRef
   ) {}
 
   ngOnInit() {
@@ -23,6 +26,7 @@ export class VistaClienteComponent {
   }
   ngAfterViewInit() {
     this.initMap();
+    M.FormSelect.init(this.elementRef.nativeElement.querySelectorAll('select'), {});
   }
 
   private initMap(): void {
