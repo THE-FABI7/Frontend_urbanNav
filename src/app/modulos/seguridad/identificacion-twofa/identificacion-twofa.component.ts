@@ -52,7 +52,7 @@ export class IdentificacionTwofaComponent {
             this.servicioSeguidad.ConstruirMenuLateral(data.menu);
             console.log(data.menu);
             this.servicioSeguidad.AlmacenarDatosUsuarioValidado(data);
-            this.router.navigate(['seguridad/vista-cliente  ']);
+            this.router.navigate(['seguridad/vista-cliente']);
           } else {
             alert('el codigo no es valido');
           }

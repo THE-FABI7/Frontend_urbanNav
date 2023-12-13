@@ -11,6 +11,9 @@ import { configRoles } from '../config/configuracion-roles';
 import { formulario } from '../model/pqrs-model';
 import { conductorModel } from '../model/conductor.model';
 import { cambiarclavemodel } from '../model/cambiarclave.model';
+import { idConductorModel } from '../model/idConductorModel';
+import { idmodelCliente } from '../model/idCliente.model';
+import { solicitudModel } from '../model/solicitud.model';
 
 @Injectable({
   providedIn: 'root',
@@ -486,5 +489,33 @@ export class SeguridadService {
         mensaje: mensaje,
       }
     );
+  }
+
+  findByIdConductor(correo: string): Observable<idConductorModel> {
+    return this.http.post<idConductorModel>(
+      `${this.urlLogica}/conductor/findByCorreo`,
+      {
+        Correo: correo,
+      }
+    );
+  }
+
+  async findByIdCliente(correo: string): Promise<number | undefined> {
+    try {
+      const response = await this.http
+        .post<number>(`${this.urlLogica}/cliente/findByCorreo`, {
+          Correo: correo,
+        })
+        .toPromise();
+
+      return response;
+    } catch (error) {
+      console.error('Error al buscar cliente por correo:', error);
+      throw error;
+    }
+  }
+
+  solicitarViaje(datos: any): Observable<solicitudModel> {
+    return this.http.post<solicitudModel>(`${this.urlLogica}solicitarViaje`, datos);
   }
 }

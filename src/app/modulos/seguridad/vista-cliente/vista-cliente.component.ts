@@ -59,5 +59,38 @@ export class VistaClienteComponent {
     });
   }
 
-  solicitarServicio() {}
+  async solicitarServicio() {
+    try {
+      let correo = this.servicioSeguridad.obtenerCorreo();
+      let clienteId = await this.servicioSeguridad.findByIdCliente(correo);
+      console.log(clienteId);
+      let datos = {
+        Origen: this.fGroup.controls['origen'].value,
+        Destino: this.fGroup.controls['destino'].value,
+        clienteId
+        
+      };
+
+      console.log(datos)    
+    
+      //solicitar viaje 
+      this.servicioSeguridad.solicitarViaje(datos).subscribe({
+        next: (respuesta: any) => {
+           alert('Se ha solicitado el viaje correctamente');
+        },
+        error: (error) => {
+          alert('Error al solicitar viaje:');
+          console.log(error)
+        },
+      });
+
+
+    } catch (error) {
+      console.error('Error al solicitar servicio:', error);
+    }
+  }
+
+  get obtenerFormGroup() {
+    return this.fGroup.controls;
+  }
 }
