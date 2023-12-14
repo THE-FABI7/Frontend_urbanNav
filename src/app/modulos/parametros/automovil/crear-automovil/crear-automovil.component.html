@@ -1,9 +1,39 @@
-<form>
+<form class="container">
     <input type="hidden" id="autoId">
+
+    <label class="registro">Registro Automovil</label>
     <div class="input-field">
+      <i class="material-icons prefix">directions_car</i>
       <input id="marca" type="text" class="validate">
       <label for="marca">Marca</label>
     </div>
+
+    <div class="input-field">
+      <i class="material-icons prefix">directions_car</i>
+      <input id="modelo" type="text" class="validate">
+      <label for="modelo">Modelo</label>
+    </div>
+
+    <div class="input-field">
+      <i class="material-icons prefix">directions_car</i>
+      <input id="placa" type="text" class="validate">
+      <label for="placa">Placa</label>
+    </div>
+
+    <div class="input-field">
+      <i class="material-icons prefix">event</i>
+      <input formControlName="fechaDelAutomovil" id="fechaDelAutomovil" type="date" class="validate">
+      <label for="fechaDelAutomovil">Fecha del Automóvil</label>
+    </div>
+
+    <div class="input-field">
+      <i class="material-icons prefix">lock</i>
+      <input id="soat" type="text" class="validate">
+      <label for="soat">Soat</label>
+    </div>
+
+    <input type="hidden" id="conductorId">
+
     <div class="file-field input-field">
       <div class="btn">
         <span>Foto</span>
@@ -13,24 +43,9 @@
         <input class="file-path validate" type="text">
       </div>
     </div>
-    <div class="input-field">
-      <input id="modelo" type="text" class="validate">
-      <label for="modelo">Modelo</label>
-    </div>
-    <div class="input-field">
-      <input id="placa" type="text" class="validate">
-      <label for="placa">Placa</label>
-    </div>
-    <div class="input-field">
-      <input id="fechaDelAutomovil" type="text" class="validate">
-      <label for="fechaDelAutomovil">Fecha del Automóvil</label>
-    </div>
-    <div class="input-field">
-      <input id="soat" type="text" class="validate">
-      <label for="soat">Soat</label>
-    </div>
-    <input type="hidden" id="conductorId">
-    <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+
+    <button class="btn waves-effect waves-light" type="submit" name="action">Enviar
       <i class="material-icons right">send</i>
     </button>
+
   </form>

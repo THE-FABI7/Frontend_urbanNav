@@ -1,8 +1,8 @@
 <div id="container" class="row">
   <div class="col s3">
     <div id="forma">
-      <form [formGroup]="fGroup">
-        <div class="input-field col s12">
+      <form [formGroup]="fGroup" >
+        <div class="input-field ">
           <select formControlName="origen" id="origen">
             <option value="" disabled selected>Elige tu origen</option>
             <option value="653fdc18224f421c5ce4991d">Fatima</option>
@@ -12,7 +12,7 @@
           <label for="origen">Origen</label>
         </div>
 
-        <div class="input-field col s12">
+        <div class="input-field ">
           <select formControlName="destino" id="destino">
             <option value="" disabled selected>Elige tu destino</option>
             <option value="653fdc18224f421c5ce4991d">Fatima</option>
@@ -31,8 +31,12 @@
         </button>
       </form>
     </div>
+
   </div>
 
+  <div class="mapa">
+    <img src="assets/images/Mapa.png" class="responsive-image">
+  </div>
   <!-- <div id="map" style="height: 300px"></div> -->
   
 </div>
