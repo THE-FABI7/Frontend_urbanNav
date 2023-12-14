@@ -52,7 +52,16 @@ export class IdentificacionTwofaComponent {
             this.servicioSeguidad.ConstruirMenuLateral(data.menu);
             console.log(data.menu);
             this.servicioSeguidad.AlmacenarDatosUsuarioValidado(data);
-            this.router.navigate(['seguridad/vista-cliente']);
+            let rol= this.servicioSeguidad.obtenerRol()
+            console.log(rol)
+
+            if( rol == 'Conductor'){
+              
+              this.router.navigate(['seguridad/vista-conductor']); 
+             }
+             if(rol == 'Cliente'){
+              this.router.navigate(['seguridad/vista-cliente']);
+             }
           } else {
             alert('el codigo no es valido');
           }

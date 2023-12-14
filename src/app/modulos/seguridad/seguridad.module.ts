@@ -20,6 +20,8 @@ import { RecaptchaModule } from 'ng-recaptcha';
 import { VistaClienteComponent } from './vista-cliente/vista-cliente.component';
 import { AceptarTerminosComponent } from './aceptar-terminos/aceptar-terminos.component';
 import { CambiarclaveComponent } from './cambiarclave/cambiarclave.component';
+import { VistaConductorComponent } from './vista-conductor/vista-conductor.component';
+import { UbicacionConductorComponent } from './ubicacion-conductor/ubicacion-conductor.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { CambiarclaveComponent } from './cambiarclave/cambiarclave.component';
     InformacionComponent,
     VistaClienteComponent,
     AceptarTerminosComponent,
-    CambiarclaveComponent
+    CambiarclaveComponent,
+    VistaConductorComponent,
+    UbicacionConductorComponent
   ],
   imports: [
     CommonModule,

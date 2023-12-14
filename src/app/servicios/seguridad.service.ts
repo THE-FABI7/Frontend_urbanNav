@@ -491,13 +491,19 @@ export class SeguridadService {
     );
   }
 
-  findByIdConductor(correo: string): Observable<idConductorModel> {
-    return this.http.post<idConductorModel>(
-      `${this.urlLogica}/conductor/findByCorreo`,
-      {
-        Correo: correo,
-      }
-    );
+  async  findByIdConductor(correo: string): Promise<number | undefined> {
+    try {
+      const response = await this.http
+        .post<number>(`${this.urlLogica}/conductor/findByCorreo`, {
+          Correo: correo,
+        })
+        .toPromise();
+
+      return response;
+    } catch (error) {
+      console.error('Error al buscar cliente por correo:', error);
+      throw error;
+    }
   }
 
   async findByIdCliente(correo: string): Promise<number | undefined> {
@@ -518,4 +524,20 @@ export class SeguridadService {
   solicitarViaje(datos: any): Observable<solicitudModel> {
     return this.http.post<solicitudModel>(`${this.urlLogica}solicitarViaje`, datos);
   }
+
+  
+  actualizarUbicacionEstadoConductor(id: number, ubicacion: string, estado: string): Observable<conductorModel> {
+    const datos = {
+      Ubicacion: ubicacion,
+      Estado: estado
+    };
+    console.log(id)
+    console.log(datos)
+    return this.http.patch<conductorModel>(`${this.urlLogica}conductor/${id}`, datos);
+  } 
+  
+
+
+
+
 }

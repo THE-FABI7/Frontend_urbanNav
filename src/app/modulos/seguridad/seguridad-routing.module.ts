@@ -14,6 +14,8 @@ import { InformacionComponent } from './informacion/informacion.component';
 import { VistaClienteComponent } from './vista-cliente/vista-cliente.component';
 import { AceptarTerminosComponent } from './aceptar-terminos/aceptar-terminos.component';
 import { CambiarclaveComponent } from './cambiarclave/cambiarclave.component';
+import { VistaConductorComponent } from './vista-conductor/vista-conductor.component';
+import { UbicacionConductorComponent } from './ubicacion-conductor/ubicacion-conductor.component';
 
 const routes: Routes = [
   {
@@ -72,6 +74,14 @@ const routes: Routes = [
     path: 'cambiar-clave',
     component: CambiarclaveComponent,
   },
+  {
+    path: 'vista-conductor',
+    component: VistaConductorComponent
+  },
+  {
+    path: 'ubicacionConductor',
+    component: UbicacionConductorComponent
+  }
 ];
 
 @NgModule({
