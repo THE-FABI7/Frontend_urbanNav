@@ -19,49 +19,48 @@ export class UbicacionConductorComponent {
 
   ngOnInit() {
     this.construirFormulario();
-  
   }
 
   ngAfterViewInit() {
-    M.FormSelect.init(this.elementRef.nativeElement.querySelectorAll('select'), {});
+    M.FormSelect.init(
+      this.elementRef.nativeElement.querySelectorAll('select'),
+      {}
+    );
   }
-
 
   construirFormulario() {
     this.fGroup = this.fb.group({
       estado: ['', Validators.required],
-      ubicacion: ['', Validators.required]
+      ubicacion: ['', Validators.required],
     });
   }
 
   Actualizar() {
     // obtenermos los datos los cuales se van a actualizar
-    let ubicacion = this.obtenerFormGroup['ubicacion'].value;
+    let idUbicacion = this.obtenerFormGroup['ubicacion'].value;
     let estado = this.obtenerFormGroup['estado'].value;
     // obtenemos el id del usuario
-    let correo = this.servicioSeguridad.obtenerCorreo();
+    let Correo = this.servicioSeguridad.obtenerCorreo();
 
-    this.servicioSeguridad
-      .findByIdConductor(correo)
-      .then((id) => {
-        try {
-          if (id) {
-            this.servicioSeguridad.actualizarUbicacionEstadoConductor(
-              id,
-              ubicacion,
-              estado
-            );
-          }
-          console.log(id)
-          alert('datos actualizados');
-        } catch (error) {
-          // Handle error
-          console.log(error);
-        }
-      })
-      .catch((error) => {
-        // Handle error
+    let datos = {
+      idUbicacion,
+      Correo,
+      estado,
+    };
+
+    try {
+      this.servicioSeguridad.actualizarUbicacionConductor(datos).subscribe({
+        next: (respuesta: any) => {
+           alert('Se ha actualizado su ubicacion correctamente');
+        },
+        error: (error) => {
+          alert('Error al actualizar:');
+          console.log(error)
+        },
       });
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   get obtenerFormGroup() {
