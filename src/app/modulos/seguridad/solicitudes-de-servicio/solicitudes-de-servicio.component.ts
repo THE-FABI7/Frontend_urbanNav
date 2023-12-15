@@ -18,9 +18,9 @@ export class SolicitudesDeServicioComponent implements OnInit {
     private servicioSeguridad: SeguridadService
     ) {}
 
-  ngOnInit() {
+  async ngOnInit() {
     this.socket = io('http://localhost:3010');
-    this.username = prompt('Enter your username') || 'DefaultUser';
+    this.username = await this.getUserName();
     this.socket.emit('join', this.username);
 
     this.socket.on('message', (data: any) => {
@@ -39,6 +39,16 @@ export class SolicitudesDeServicioComponent implements OnInit {
   ngAfterViewInit() {
     M.FormSelect.init(this.elementRef.nativeElement.querySelectorAll('select'), {});
   }
+
+  async getUserName(): Promise<string> {
+    let correo = this.servicioSeguridad.obtenerCorreo();
+    let conductorId = await this.servicioSeguridad.findByIdConductor(correo);
+    if (conductorId == undefined) {
+      return "undefined";
+    } else {
+      return conductorId.toString();
+    }
+  }
 /*
   displayMessage(data: any) {
     const user = data.message.user;
@@ -46,7 +56,7 @@ export class SolicitudesDeServicioComponent implements OnInit {
     const messageId = data.messageId;
     const li = document.createElement('li');
     li.setAttribute('id', messageId);
-    li.innerHTML = `<div><strong>${messageId}:</strong> ${message}\n <button (click)="deleteMessage('${messageId}')">Asignar</button></div>`;
+    li.innerHTML = <div><strong>${messageId}:</strong> ${message}\n <button (click)="deleteMessage('${messageId}')">Asignar</button></div>;
     const messageList = document.getElementById('messageList');
     if (messageList) {
       messageList.appendChild(li);
@@ -78,17 +88,17 @@ export class SolicitudesDeServicioComponent implements OnInit {
     const messageId = data.messageId;
     const li = document.createElement('li');
     li.setAttribute('id', messageId);
-  
+    
     const div = document.createElement('div');
     div.style.display = 'flex';
     div.style.alignItems = 'center';
-  
+    
     const strong = document.createElement('strong');
     strong.textContent = `${messageId}:`;
-  
+    
     const span = document.createElement('span');
     span.textContent = message;
-  
+    
     const button = document.createElement('button');
     button.textContent = 'Asignar';
     button.addEventListener('click', () => this.deleteMessage(messageId));

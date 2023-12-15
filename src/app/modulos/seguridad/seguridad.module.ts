@@ -23,6 +23,7 @@ import { VistaConductorComponent } from './vista-conductor/vista-conductor.compo
 import { UbicacionConductorComponent } from './ubicacion-conductor/ubicacion-conductor.component';
 import { VistaAdministradorComponent } from './vista-administrador/vista-administrador.component';
 import {  NgChartsModule } from 'ng2-charts';
+import { VistaEsperaComponent } from './vista-espera/vista-espera.component';
 
 
 @NgModule({
@@ -46,6 +47,7 @@ import {  NgChartsModule } from 'ng2-charts';
     VistaConductorComponent,
     UbicacionConductorComponent,
     VistaAdministradorComponent,
+    VistaEsperaComponent,
     
   ],
   imports: [

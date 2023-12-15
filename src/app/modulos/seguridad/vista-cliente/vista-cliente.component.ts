@@ -5,6 +5,7 @@ import * as L from 'leaflet';
 import { AfterViewInit, ElementRef } from '@angular/core';
 import * as M from 'materialize-css';
 import io from 'socket.io-client';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -21,7 +22,8 @@ export class VistaClienteComponent {
   constructor(
     private fb: FormBuilder,
     private servicioSeguridad: SeguridadService,
-    private elementRef: ElementRef
+    private elementRef: ElementRef,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -94,6 +96,7 @@ export class VistaClienteComponent {
     } catch (error) {
       console.error('Error al solicitar servicio:', error);
     }
+    this.router.navigate(['seguridad/vista-espera']);
   }
 
   get obtenerFormGroup() {

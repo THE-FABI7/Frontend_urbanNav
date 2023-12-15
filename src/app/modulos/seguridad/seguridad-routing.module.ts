@@ -15,6 +15,7 @@ import { VistaClienteComponent } from './vista-cliente/vista-cliente.component';
 import { AceptarTerminosComponent } from './aceptar-terminos/aceptar-terminos.component';
 import { CambiarclaveComponent } from './cambiarclave/cambiarclave.component';
 import { SolicitudesDeServicioComponent } from './solicitudes-de-servicio/solicitudes-de-servicio.component';
+import { VistaEsperaComponent } from './vista-espera/vista-espera.component';
 
 const routes: Routes = [
   {
@@ -81,6 +82,10 @@ const routes: Routes = [
     path: 'solicitudes-servicio',
     component: SolicitudesDeServicioComponent,
   },
+  {
+    path: 'vista-espera',
+    component: VistaEsperaComponent,
+  }
 
 ];
 

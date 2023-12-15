@@ -5,8 +5,19 @@
         <div class="input-field ">
           <select formControlName="origen" id="origen">
             <option value="" disabled selected>Elige tu origen</option>
-            <option value="653fdc18224f421c5ce4991d">Fatima</option>
-            <option value="653fdc49224f421c5ce4991e">Enea</option>
+            <option value="653fdc18224f421c5ce4991d">U Caldas</option>
+            <option value="653fdc49224f421c5ce4991e">Yarumos</option>
+            <option value="653fdc5e224f421c5ce4991f">La Fuente</option>
+            <option value="653fdc77224f421c5ce49920">Catedral</option>
+            <option value="653fdc89224f421c5ce49921">Torre Chipre</option>
+            <option value="655109a0d35057aa9d052e48">Plaza de Toros</option>
+            <option value="655109b8d35057aa9d052e49">Parque el Lago</option>
+            <option value="655109f8d35057aa9d052e4a">Hospital Central</option>
+            <option value="65510ab6d35057aa9d052e4b">Parque Bicentenario</option>
+            <option value="65510bc8d35057aa9d052e4c">Centro de Innovacion</option>
+            <option value="65510be5d35057aa9d052e4d">Plaza de Mercado</option>
+            <option value="65510c50d35057aa9d052e4e">U de Manizales</option>
+            <option value="65511022d35057aa9d052e52">Parque Alfonso</option>
             <!-- Agrega más opciones según sea necesario -->
           </select>
           <label for="origen">Origen</label>
@@ -15,14 +26,26 @@
         <div class="input-field ">
           <select formControlName="destino" id="destino">
             <option value="" disabled selected>Elige tu destino</option>
-            <option value="653fdc18224f421c5ce4991d">Fatima</option>
-            <option value="653fdc49224f421c5ce4991e">Enea</option>
+            <option value="653fdc18224f421c5ce4991d">U Caldas</option>
+            <option value="653fdc49224f421c5ce4991e">Yarumos</option>
+            <option value="653fdc5e224f421c5ce4991f">La Fuente</option>
+            <option value="653fdc77224f421c5ce49920">Catedral</option>
+            <option value="653fdc89224f421c5ce49921">Torre Chipre</option>
+            <option value="655109a0d35057aa9d052e48">Plaza de Toros</option>
+            <option value="655109b8d35057aa9d052e49">Parque el Lago</option>
+            <option value="655109f8d35057aa9d052e4a">Hospital Central</option>
+            <option value="65510ab6d35057aa9d052e4b">Parque Bicentenario</option>
+            <option value="65510bc8d35057aa9d052e4c">Centro de Innovacion</option>
+            <option value="65510be5d35057aa9d052e4d">Plaza de Mercado</option>
+            <option value="65510c50d35057aa9d052e4e">U de Manizales</option>
+            <option value="65511022d35057aa9d052e52">Parque Alfonso</option>
             <!-- Agrega más opciones según sea necesario -->
           </select>
           <label for="destino">Destino</label>
         </div>
 
         <button
+          
           class="btn waves-effect waves-light ml100"
           (click)="solicitarServicio()"
           [disabled]="!fGroup.valid"
