@@ -24,6 +24,9 @@ import { UbicacionConductorComponent } from './ubicacion-conductor/ubicacion-con
 import { VistaAdministradorComponent } from './vista-administrador/vista-administrador.component';
 import {  NgChartsModule } from 'ng2-charts';
 import { VistaEsperaComponent } from './vista-espera/vista-espera.component';
+import { SolicitudesDeServicioComponent } from './solicitudes-de-servicio/solicitudes-de-servicio.component';
+
+
 
 
 @NgModule({
@@ -48,7 +51,7 @@ import { VistaEsperaComponent } from './vista-espera/vista-espera.component';
     UbicacionConductorComponent,
     VistaAdministradorComponent,
     VistaEsperaComponent,
-    
+    SolicitudesDeServicioComponent,
   ],
   imports: [
     CommonModule,

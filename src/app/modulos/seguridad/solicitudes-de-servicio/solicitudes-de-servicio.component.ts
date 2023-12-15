@@ -3,6 +3,8 @@ import { Component, ElementRef, OnInit } from '@angular/core';
 import * as M from 'materialize-css';
 import io from 'socket.io-client';
 import { SeguridadService } from 'src/app/servicios/seguridad.service';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-solicitudes-de-servicio',
@@ -16,7 +18,8 @@ export class SolicitudesDeServicioComponent implements OnInit {
   constructor(
     private elementRef: ElementRef,
     private servicioSeguridad: SeguridadService
-    ) {}
+  ) { }
+
 
   async ngOnInit() {
     this.socket = io('http://localhost:3010');
@@ -36,50 +39,58 @@ export class SolicitudesDeServicioComponent implements OnInit {
     });
   }
 
+  async getUserName(): Promise<string> {
+    try {
+      let correo = this.servicioSeguridad.obtenerCorreo();
+      let conductorId = await this.servicioSeguridad.findByIdConductor(correo);
+  
+      if (conductorId == undefined) {
+        return "undefined";
+      } else {
+        return conductorId.toString();
+      }
+    } catch (error) {
+      console.error('Error al obtener el nombre de usuario:', error);
+      // Puedes lanzar una excepción o devolver un valor por defecto, dependiendo de tus necesidades
+      return "undefined";
+    }
+  }
+  
+
   ngAfterViewInit() {
     M.FormSelect.init(this.elementRef.nativeElement.querySelectorAll('select'), {});
   }
-
-  async getUserName(): Promise<string> {
-    let correo = this.servicioSeguridad.obtenerCorreo();
-    let conductorId = await this.servicioSeguridad.findByIdConductor(correo);
-    if (conductorId == undefined) {
-      return "undefined";
-    } else {
-      return conductorId.toString();
-    }
+  /*
+    displayMessage(data: any) {
+      const user = data.message.user;
+      const message = data.message.message;
+      const messageId = data.messageId;
+      const li = document.createElement('li');
+      li.setAttribute('id', messageId);
+      li.innerHTML = <div><strong>${messageId}:</strong> ${message}\n <button (click)="deleteMessage('${messageId}')">Asignar</button></div>;
+      const messageList = document.getElementById('messageList');
+      if (messageList) {
+        messageList.appendChild(li);
+      }
   }
-/*
-  displayMessage(data: any) {
-    const user = data.message.user;
-    const message = data.message.message;
-    const messageId = data.messageId;
-    const li = document.createElement('li');
-    li.setAttribute('id', messageId);
-    li.innerHTML = <div><strong>${messageId}:</strong> ${message}\n <button (click)="deleteMessage('${messageId}')">Asignar</button></div>;
-    const messageList = document.getElementById('messageList');
-    if (messageList) {
-      messageList.appendChild(li);
+  
+  
+    deleteMessage(messageId: string) {
+      const messageElement = document.getElementById(messageId);
+      alert('llega hasta deleteMesage');
+      if (messageElement) {
+        messageElement.remove();
+        this.socket.emit('deleteMessage', messageId);
+        alert('Viaje asignado con éxito');
+      }
     }
-}
-
-
-  deleteMessage(messageId: string) {
-    const messageElement = document.getElementById(messageId);
-    alert('llega hasta deleteMesage');
-    if (messageElement) {
-      messageElement.remove();
-      this.socket.emit('deleteMessage', messageId);
-      alert('Viaje asignado con éxito');
-    }
-  }
-  */
+    */
   public messages: any[] = [];
   displayMessage(data: any) {
     const user = data.message.user;
     const message = data.message.message;
     const messageId = data.messageId;
-    
+
     this.messages.push({ user, message, messageId });
   }
 
@@ -88,27 +99,27 @@ export class SolicitudesDeServicioComponent implements OnInit {
     const messageId = data.messageId;
     const li = document.createElement('li');
     li.setAttribute('id', messageId);
-    
+
     const div = document.createElement('div');
     div.style.display = 'flex';
     div.style.alignItems = 'center';
-    
+
     const strong = document.createElement('strong');
     strong.textContent = `${messageId}:`;
-    
+
     const span = document.createElement('span');
     span.textContent = message;
-    
+
     const button = document.createElement('button');
     button.textContent = 'Asignar';
     button.addEventListener('click', () => this.deleteMessage(messageId));
-  
+
     div.appendChild(strong);
     div.appendChild(span);
     div.appendChild(button);
-  
+
     li.appendChild(div);
-  
+
     const privateMessagesElement = document.getElementById('privateMessages');
     if (privateMessagesElement) {
       privateMessagesElement.appendChild(li);
