@@ -15,6 +15,7 @@ import { idConductorModel } from '../model/idConductorModel';
 import { idmodelCliente } from '../model/idCliente.model';
 import { solicitudModel } from '../model/solicitud.model';
 import { AutomovilModel } from '../model/automovil.model';
+import { ubicacionConductorModel } from '../model/ubicacionConductor.model';
 
 @Injectable({
   providedIn: 'root',
@@ -512,7 +513,7 @@ export class SeguridadService {
     );
   }
 
-  async  findByIdConductor(correo: string): Promise<number | undefined> {
+  async findByIdConductor(correo: string): Promise<number | undefined> {
     try {
       const response = await this.http
         .post<number>(`${this.urlLogica}/conductor/findByCorreo`, {
@@ -543,22 +544,42 @@ export class SeguridadService {
   }
 
   solicitarViaje(datos: any): Observable<solicitudModel> {
-    return this.http.post<solicitudModel>(`${this.urlLogica}solicitarViaje`, datos);
+    return this.http.post<solicitudModel>(
+      `${this.urlLogica}solicitarViaje`,
+      datos
+    );
   }
 
-  
-  actualizarUbicacionEstadoConductor(id: number, ubicacion: string, estado: string): Observable<conductorModel> {
+  actualizarUbicacionEstadoConductor(
+    id: number,
+    ubicacion: string,
+    estado: string
+  ): Observable<conductorModel> {
     const datos = {
       Ubicacion: ubicacion,
-      Estado: estado
+      Estado: estado,
     };
-    console.log(id)
-    console.log(datos)
-    return this.http.patch<conductorModel>(`${this.urlLogica}conductor/${id}`, datos);
-  } 
-  
+    console.log(id);
+    console.log(datos);
+    return this.http.patch<conductorModel>(
+      `${this.urlLogica}conductor/${id}`,
+      datos
+    );
+  }
 
+  actualizarUbicacionConductor(
+    datos: any
+  ): Observable<ubicacionConductorModel> {
+    let usuarioValidado = localStorage.getItem('datos-sesion');
+    const token = usuarioValidado ? JSON.parse(usuarioValidado).token : '';
+    // Crea un objeto HttpHeaders y establece el token de autorización
+    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + token);
+    console.log(token)
 
-
-
+    return this.http.post<ubicacionConductorModel>(
+      `${this.urlLogica}ubicacion-conductor`,
+      datos,
+      { headers }
+    );
+  }
 }
