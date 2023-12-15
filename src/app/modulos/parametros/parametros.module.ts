@@ -14,6 +14,7 @@ import { CrearComentarioComponent } from './comentario/crear-comentario/crear-co
 import { ListarComentarioComponent } from './comentario/listar-comentario/listar-comentario.component';
 import { ListarViajesComponent } from './viajes/listar-viajes/listar-viajes.component';
 import { ListarPagosComponent } from './pagos/listar-pagos/listar-pagos.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -30,10 +31,12 @@ import { ListarPagosComponent } from './pagos/listar-pagos/listar-pagos.componen
     ListarComentarioComponent,
     ListarViajesComponent,
     ListarPagosComponent,
+    
   ],
   imports: [
     CommonModule,
-    ParametrosRoutingModule
+    ParametrosRoutingModule,
+    ReactiveFormsModule,
   ]
 })
 export class ParametrosModule { }
