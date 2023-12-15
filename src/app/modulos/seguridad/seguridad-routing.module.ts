@@ -16,6 +16,7 @@ import { AceptarTerminosComponent } from './aceptar-terminos/aceptar-terminos.co
 import { CambiarclaveComponent } from './cambiarclave/cambiarclave.component';
 import { VistaConductorComponent } from './vista-conductor/vista-conductor.component';
 import { UbicacionConductorComponent } from './ubicacion-conductor/ubicacion-conductor.component';
+import { VistaAdministradorComponent } from './vista-administrador/vista-administrador.component';
 
 const routes: Routes = [
   {
@@ -81,6 +82,9 @@ const routes: Routes = [
   {
     path: 'ubicacionConductor',
     component: UbicacionConductorComponent
+  },{
+    path: 'vistaAdministrador',
+    component: VistaAdministradorComponent
   }
 ];
 

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, async } from 'rxjs';
 import { usuarioModel } from '../model/usuario.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { configuracionRutasBackend } from '../config/configuracion-rutas-backend';
@@ -14,6 +14,7 @@ import { cambiarclavemodel } from '../model/cambiarclave.model';
 import { idConductorModel } from '../model/idConductorModel';
 import { idmodelCliente } from '../model/idCliente.model';
 import { solicitudModel } from '../model/solicitud.model';
+import { AutomovilModel } from '../model/automovil.model';
 import { ubicacionConductorModel } from '../model/ubicacionConductor.model';
 
 @Injectable({
@@ -320,6 +321,26 @@ export class SeguridadService {
     );
   }
 
+  
+  /**
+   * La función `RegistroAutomovilLogica` envía una solicitud POST a una URL especificada con los datos
+   * proporcionados y devuelve un Observable de tipo `AutomovilModel`.
+   * @param {any} datos - El parámetro "datos" es de tipo "cualquiera" lo que significa que puede
+   * aceptar cualquier tipo de dato. Se utiliza para pasar los datos del automóvil a registrar.
+   * @returns un Observable de tipo `AutomovilModel`.
+   */
+  RegistroAutomovilLogica(datos: any): Observable<AutomovilModel> {
+    console.log(datos);
+    let usuarioValidado = localStorage.getItem('datos-sesion');
+    const token = usuarioValidado ? JSON.parse(usuarioValidado).token : '';
+    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + token);
+    console.log(token)
+    return this.http.post<AutomovilModel>(
+      `${this.urlLogica}automovil`,
+      datos, { headers }
+    );
+  }
+  
   /**
    * La función `ValidarHashUsuarioPublico` toma una cadena hash como entrada y envía una solicitud
    * POST a una URL específica para validar el hash.

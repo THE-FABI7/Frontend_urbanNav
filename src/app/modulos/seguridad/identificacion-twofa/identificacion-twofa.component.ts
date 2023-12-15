@@ -62,6 +62,11 @@ export class IdentificacionTwofaComponent {
              if(rol == 'Cliente'){
               this.router.navigate(['seguridad/vista-cliente']);
              }
+
+             if(rol == 'Administrador'){
+              this.router.navigate(['seguridad/vistaAdministrador']);
+             }
+
           } else {
             alert('el codigo no es valido');
           }
