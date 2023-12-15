@@ -1,0 +1,11 @@
+<!-- solicitudes-de-servicio.component.html -->
+<h2>Chat Room of <label id="usernameChat">{{ username }}</label></h2>
+ 
+<ul id="privateMessages">
+  <li *ngFor="let message of messages; let i = index" [id]="message.messageId">
+    <div>
+      <strong>{{ message.user }}:</strong> {{ message.message }}
+      <button (click)="deleteMessage(i)">Asignar</button>
+    </div>
+  </li>
+</ul>

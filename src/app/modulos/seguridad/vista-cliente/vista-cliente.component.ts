@@ -4,6 +4,8 @@ import { SeguridadService } from 'src/app/servicios/seguridad.service';
 import * as L from 'leaflet';
 import { AfterViewInit, ElementRef } from '@angular/core';
 import * as M from 'materialize-css';
+import io from 'socket.io-client';
+
 
 @Component({
   selector: 'app-vista-cliente',
@@ -14,6 +16,7 @@ import * as M from 'materialize-css';
 export class VistaClienteComponent {
   fGroup: FormGroup = new FormGroup({});
   map: L.Map | undefined;
+  private socket: any;
 
   constructor(
     private fb: FormBuilder,
@@ -23,6 +26,7 @@ export class VistaClienteComponent {
 
   ngOnInit() {
     this.construirFormulario();
+    this.socket = io('http://localhost:3010');
   }
   ngAfterViewInit() {
     this.initMap();
@@ -75,19 +79,17 @@ export class VistaClienteComponent {
         
       };
 
-      console.log(datos)    
     
-      //solicitar viaje 
-      this.servicioSeguridad.solicitarViaje(datos).subscribe({
-        next: (respuesta: any) => {
-           alert('Se ha solicitado el viaje correctamente');
-        },
-        error: (error) => {
-          alert('Error al solicitar viaje:');
-          console.log(error)
-        },
-      });
-
+      // Solicitar viaje 
+      let idViaje = await this.servicioSeguridad.solicitarViaje(datos);
+    // let nodeInfo = await this.servicioSeguridad.obtenerInformacionNodos();
+      if (idViaje) {
+        this.sendMessage(datos.Origen, datos.Destino, correo, idViaje);
+        console.log(datos);
+       //console.log("node info: " + nodeInfo);
+      } else {
+        console.error('Error al solicitar el viaje. El idViaje es undefined.');
+      }
 
     } catch (error) {
       console.error('Error al solicitar servicio:', error);
@@ -97,4 +99,24 @@ export class VistaClienteComponent {
   get obtenerFormGroup() {
     return this.fGroup.controls;
   }
+
+  async sendMessage(origen: string, destino: string, usuario: string, idViaje: number) {
+    //let conductores: any[] = [];
+  
+     const message = origen + ' - ' + destino;
+     let conductores = await this.servicioSeguridad.buscarConductoresCercanos(origen);
+ 
+       console.log(conductores);
+       console.log(message);
+ 
+     const data = {
+       user: usuario,
+       message: message,
+       recipient: conductores,
+       messageId: idViaje
+     };
+ 
+     this.socket.emit("closerDriversMessage", data);
+     console.log('enviado');
+   }
 }

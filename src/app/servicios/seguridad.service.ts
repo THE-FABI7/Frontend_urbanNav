@@ -16,6 +16,7 @@ import { idmodelCliente } from '../model/idCliente.model';
 import { solicitudModel } from '../model/solicitud.model';
 import { AutomovilModel } from '../model/automovil.model';
 import { ubicacionConductorModel } from '../model/ubicacionConductor.model';
+import { asignarViajemodel } from '../model/asignarViaje.model';
 
 @Injectable({
   providedIn: 'root',
@@ -543,12 +544,6 @@ export class SeguridadService {
     }
   }
 
-  solicitarViaje(datos: any): Observable<solicitudModel> {
-    return this.http.post<solicitudModel>(
-      `${this.urlLogica}solicitarViaje`,
-      datos
-    );
-  }
 
   actualizarUbicacionEstadoConductor(
     id: number,
@@ -581,5 +576,98 @@ export class SeguridadService {
       datos,
       { headers }
     );
+  }
+
+  async solicitarViaje(datos: any): Promise<number | undefined> {
+    // return this.http.post<solicitudModel>(`${this.urlLogica}solicitarViaje`, datos);
+    try {
+      const response = await this.http
+        .post<number>(`${this.urlLogica}solicitarViaje`, {
+          Origen: datos.Origen,
+          Destino: datos.Destino,
+          clienteId: datos.clienteId,
+        })
+        .toPromise();
+      return response;
+    } catch (error) {
+      console.error('Error al solicitar viaje:', error);
+      throw error;
+    }
+  }
+
+  async buscarConductoresCercanos(origen: string): Promise<number[] | undefined> {
+    try {
+      const response = await this.http
+        .post<number[]>(`${this.urlLogica}buscarConductoresCercanos`, {
+          ubicacion: origen,
+        })
+        .toPromise();
+
+      return response;
+    } catch (error) {
+      console.error('Error al buscar los conductores cercanos:', error);
+      throw error;
+    }
+  }
+
+  async getNodeInformation(): Promise<{id: string, name: string}[]> {
+    try {
+      const response = await this.http
+        .get<{id: string; name: string}[]>(`${this.urlLogica}/locations/ids-and-names`)
+        .toPromise();
+  
+      return response || [];  // Si response es undefined, devolver un array vacío
+    } catch (error) {
+      console.error('Error al obtener la información de los nodos:', error);
+      throw error;
+    }
+  }
+
+  async obtenerInformacionNodos(): Promise<{ id: string, name: string }[]> {
+    try {
+      // Llamada a la función getNodeInformation
+      const nodos = await this.getNodeInformation();
+  
+      // Verificar si se obtuvo la información correctamente
+      if (nodos) {
+        const listaNodos: string[] = [];
+  
+        // Iterar sobre cada objeto en el arreglo y acceder a sus propiedades
+        nodos.forEach(nodo => {
+          const id = nodo.id;
+          const name = nodo.name;
+  
+          // Agregar el nombre del nodo a la lista 
+          listaNodos.push(name);
+  
+          // Hacer algo más con la información si es necesario
+          console.log(`ID: ${id}, Name: ${name}`);
+        });
+  
+        // Devolver la lista de nodos
+        return nodos;
+      } else {
+        console.log('No se obtuvo información de los nodos.');
+        return []; // Devolver un array vacío si no se obtuvo información
+      }
+    } catch (error) {
+      console.error('Error al obtener la información de los nodos:', error);
+      throw error; // Puedes manejar el error de otra manera si es necesario
+    }
+  }
+
+  async asignarViaje(datos: any) {
+    try {
+        await this.http
+        .patch<asignarViajemodel>(`${this.urlLogica}asignarConductor`, {
+          viajeId: datos.viajeId,
+          conductorId: datos.conductorId,
+        }).subscribe();
+        console.log("Viaje asignado con éxito: " + datos.viajeId + " " + datos.conductorId);
+
+    } catch (error) {
+      console.error('Error al buscar los conductores cercanos:', error);
+      throw error;
+    }
   }
 }
