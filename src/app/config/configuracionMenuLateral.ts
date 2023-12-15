@@ -20,7 +20,7 @@ export namespace ConfiguracionMenuLateral {
       texto: 'Administrador',
     },
     {
-      id: '652b556ffe8aae18547a4dd9',
+      id: '652b556ffe8aae18547a4dd8',
       ruta: '/parametros/listar-comentarios',
       icono: "comment",
       texto: 'Comentario',
@@ -43,6 +43,12 @@ export namespace ConfiguracionMenuLateral {
       icono: 'directions_car',
       texto: 'Automovil',
     },
+    {
+      id: '657bc7b9a99aea5da8b408c4',
+      ruta: '/seguridad/ubicacionConductor',
+      icono: 'local_shipping',
+      texto: 'Mi ubicacion'
+    }
   ];
 }
 

@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { SeguridadRoutingModule } from './seguridad-routing.module';
 import { IdentificacionUsuarioComponent } from './identificacion-usuario/identificacion-usuario.component';
 import { IdentificacionTwofaComponent } from './identificacion-twofa/identificacion-twofa.component';
@@ -22,6 +21,9 @@ import { AceptarTerminosComponent } from './aceptar-terminos/aceptar-terminos.co
 import { CambiarclaveComponent } from './cambiarclave/cambiarclave.component';
 import { VistaConductorComponent } from './vista-conductor/vista-conductor.component';
 import { UbicacionConductorComponent } from './ubicacion-conductor/ubicacion-conductor.component';
+import { VistaAdministradorComponent } from './vista-administrador/vista-administrador.component';
+import {  NgChartsModule } from 'ng2-charts';
+
 
 @NgModule({
   declarations: [
@@ -42,13 +44,15 @@ import { UbicacionConductorComponent } from './ubicacion-conductor/ubicacion-con
     AceptarTerminosComponent,
     CambiarclaveComponent,
     VistaConductorComponent,
-    UbicacionConductorComponent
+    UbicacionConductorComponent,
+    VistaAdministradorComponent
   ],
   imports: [
     CommonModule,
     SeguridadRoutingModule,
     ReactiveFormsModule, 
-    RecaptchaModule
+    RecaptchaModule,
+    NgChartsModule
     
   ]
 })

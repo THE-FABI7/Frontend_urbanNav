@@ -6,6 +6,7 @@ import { CrearComentarioComponent } from './comentario/crear-comentario/crear-co
 import { ListarComentarioComponent } from './comentario/listar-comentario/listar-comentario.component';
 import { ListarViajesComponent } from './viajes/listar-viajes/listar-viajes.component';
 import { ListarPagosComponent } from './pagos/listar-pagos/listar-pagos.component';
+import { CrearMetodoPagoComponent } from './metododePago/crear-metodo-pago/crear-metodo-pago.component';
 
 const routes: Routes = [
   {
@@ -35,7 +36,15 @@ const routes: Routes = [
   {
     path: 'listar-pagos',
     component: ListarPagosComponent,
-  }
+  },
+  {
+    path: 'listar-pagos/:id',
+    component: ListarPagosComponent,
+  },
+  {
+    path: 'crear-metodopago',
+    component: CrearMetodoPagoComponent,
+  },
 ];
 
 @NgModule({
