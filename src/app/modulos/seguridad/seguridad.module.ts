@@ -45,14 +45,16 @@ import {  NgChartsModule } from 'ng2-charts';
     CambiarclaveComponent,
     VistaConductorComponent,
     UbicacionConductorComponent,
-    VistaAdministradorComponent
+    VistaAdministradorComponent,
+    
   ],
   imports: [
     CommonModule,
     SeguridadRoutingModule,
     ReactiveFormsModule, 
     RecaptchaModule,
-    NgChartsModule
+    NgChartsModule,
+    ReactiveFormsModule,
     
   ]
 })

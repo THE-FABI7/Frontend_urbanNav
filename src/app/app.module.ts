@@ -11,6 +11,8 @@ import { InicioComponent } from './publico/inicio/inicio.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RecaptchaModule } from 'ng-recaptcha';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 
 @NgModule({
@@ -29,7 +31,8 @@ import { RecaptchaModule } from 'ng-recaptcha';
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    RecaptchaModule
+    RecaptchaModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
